@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:histore/screen/splash_screen.dart';
+import 'package:histore/screen/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,19 +12,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       //DeviceOrientation.landscapeRight,
     ]);
 
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'histore',
       theme: ThemeData(
 
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: LoginScreen(),
     );
   }
 }
+
+
