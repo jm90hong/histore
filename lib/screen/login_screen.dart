@@ -16,6 +16,12 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
 
 
+  TextStyle ts1 = const TextStyle(color: Colors.white,fontWeight: FontWeight.normal,fontFamily: 'dx',fontSize: 14);
+
+  TextEditingController idct = TextEditingController();
+  TextEditingController pwct = TextEditingController();
+  TextEditingController pwchkct = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,62 +34,94 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           width: double.infinity,
           height: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 16,right: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    SimpleButton(
-                        imagePath: 'assets/icon/btn_home.png',
-                        width: 50,
-                        onTap: (){
-                          Navigator.pop(context);
-                        }
-                      )
-                  ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 16,right: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      SimpleButton(
+                          imagePath: 'assets/icon/btn_home.png',
+                          width: 50,
+                          onTap: (){
+                            Navigator.pop(context);
+                          }
+                        )
+                    ],
+                  ),
                 ),
-              ),
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  Image.asset('assets/image/login_duru.png',width: 400,),
-                  Positioned(
-                    top: 70,
-                    child: Container(
-                      width: 350,
-                      height: 150,
-                      color: Colors.blue.withOpacity(0.2),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                children: [
-                                  Text('아이디'),
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Image.asset('assets/image/login_duru.png',width: 420,),
+                    Positioned(
+                      top: 70,
+                      child: Container(
+                        width: 370,
+                        height: 170,
+                        color: Colors.transparent,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
+                                        alignment: Alignment.centerRight,
+                                        width:90,
+                                        child: Text('아이디',style: ts1,)
+                                    ),
+                                    const SizedBox(width: 6,),
+                                    AppInput(width: 135,controller: idct,)
+                                  ],
+                                ),
+                                SizedBox(height: 8,),
+                                Row(
+                                  children: [
+                                    Container(
+                                        alignment: Alignment.centerRight,
+                                        width:90,
+                                        child: Text('비밀번호',style: ts1,)
+                                    ),
+                                    const SizedBox(width: 6,),
+                                    AppInput(width: 135,isPassword: true,controller: pwct,)
+                                  ],
+                                ),
+                                SizedBox(height: 8,),
+                                Row(
+                                  children: [
+                                    Container(
+                                        alignment: Alignment.centerRight,
+                                        width:90,
+                                        child: Text('비밀번호 확인',style: ts1,)
+                                    ),
+                                    const SizedBox(width: 6,),
+                                    AppInput(width: 135,isPassword: true,controller: pwchkct,)
+                                  ],
+                                ),
+                              ],
+                            ),
+                            SizedBox(width: 15,),
+                            SimpleButton(
+                                imagePath: 'assets/icon/btn_adduser.png',
+                                width: 100,
+                                onTap: (){
 
-                                ],
-                              ),
-                            ],
-                          ),
-                          SimpleButton(
-                              imagePath: 'assets/icon/btn_adduser.png',
-                              width: 100,
-                              onTap: (){
-
-                              }
-                          )
-                        ],
+                                }
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  )
-                ],
-              )
-            ],
+                    )
+                  ],
+                )
+              ],
+            ),
           )
       ),
     );

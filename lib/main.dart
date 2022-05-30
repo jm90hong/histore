@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'histore',
         theme: ThemeData(
-
+          fontFamily: 'kp',
           primarySwatch: Colors.blue,
         ),
         home: IndexScreen(),

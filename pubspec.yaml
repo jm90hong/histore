@@ -37,6 +37,7 @@ dependencies:
   http: ^0.13.4
   provider: ^6.0.3
   page_transition: ^2.0.5
+  fluttertoast: ^8.0.9
 
 dev_dependencies:
   flutter_test:
@@ -77,6 +78,16 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+
+
+  fonts:
+    - family: kp
+      fonts:
+        - asset: assets/fonts/kopub.ttf
+
+    - family: dx
+      fonts:
+        - asset: assets/fonts/dx.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

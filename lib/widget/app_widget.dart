@@ -2,24 +2,48 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+void showToastLong(String msg){
+  Fluttertoast.showToast(
+      msg: msg,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.black,
+      textColor: Colors.white,
+      fontSize: 15.0
+  );
+}
 
 
 class AppInput extends StatelessWidget {
 
-  var width;
+  double width;
+  bool isPassword=false;
+  TextEditingController controller;
 
+  AppInput({
+    required this.width,
+    this.isPassword=false,
+    required this.controller
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 4),
       width: width,
       height: 32,
+      color: Color(0xfffcdbaa),
       child: TextField(
-        style: TextStyle(color: Colors.black,fontSize:20),
+        controller: controller,
+        obscureText: isPassword,
+        style: TextStyle(color: Colors.black,fontSize: 15),
         cursorColor: Colors.black,
         decoration: InputDecoration(
           isDense: true,
-          fillColor: Colors.grey.shade300,
+          fillColor: Color(0xfffcdbaa),
           border: InputBorder.none,
           focusedBorder: InputBorder.none,
           enabledBorder: InputBorder.none,
