@@ -4,6 +4,34 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 
+class AppInput extends StatelessWidget {
+
+  var width;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: 32,
+      child: TextField(
+        style: TextStyle(color: Colors.black,fontSize:20),
+        cursorColor: Colors.black,
+        decoration: InputDecoration(
+          isDense: true,
+          fillColor: Colors.grey.shade300,
+          border: InputBorder.none,
+          focusedBorder: InputBorder.none,
+          enabledBorder: InputBorder.none,
+          errorBorder: InputBorder.none,
+          disabledBorder: InputBorder.none,
+        ),
+      ),
+    );
+  }
+}
+
+
 
 class SimpleButton extends StatelessWidget {
 
@@ -108,7 +136,7 @@ class _CustomButtonState extends State<CustomButton> {
             )
           ],
         ),
-        IgnorePointer(child: widget.text ?? const Text(''))
+        IgnorePointer(child: widget.text)
       ],
     );
   }
