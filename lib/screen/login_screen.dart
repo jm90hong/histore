@@ -106,6 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ],
                             ),
+
                             SizedBox(width: 15,),
                             SimpleButton(
                                 imagePath: 'assets/icon/btn_adduser.png',
