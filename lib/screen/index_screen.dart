@@ -45,34 +45,36 @@ class _IndexScreenState extends State<IndexScreen> {
           ),
           width: double.infinity,
           height: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/icon/logo.png',width: 300,),
-              SizedBox(height: 30,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SimpleButton(
-                    imagePath: 'assets/icon/btn_login.png',
-                    width: 100,
-                    onTap: (){
-                      //로그인
-                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: LoginScreen()));
-                    },
-                  ),
-                  SizedBox(width: 50,),
-                  SimpleButton(
-                    imagePath: 'assets/icon/btn_adduser.png',
-                    width: 100,
-                    onTap: (){
-                      //회원가입
-                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: AddUserScreen()));
-                    },
-                  ),
-                ],
-              )
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/icon/logo.png',width: 300,),
+                SizedBox(height: 30,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SimpleButton(
+                      imagePath: 'assets/icon/btn_login.png',
+                      width: 100,
+                      onTap: (){
+                        //로그인
+                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: LoginScreen()));
+                      },
+                    ),
+                    SizedBox(width: 50,),
+                    SimpleButton(
+                      imagePath: 'assets/icon/btn_adduser.png',
+                      width: 100,
+                      onTap: (){
+                        //회원가입
+                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: AddUserScreen()));
+                      },
+                    ),
+                  ],
+                )
+              ],
+            ),
           )
       ),
     );

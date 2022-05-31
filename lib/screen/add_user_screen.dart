@@ -2,6 +2,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:histore/app_http/user_http.dart';
+import 'package:histore/vo/user.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -111,7 +113,39 @@ class _AddUserScreenState extends State<AddUserScreen> {
                             SimpleButton(
                                 imagePath: 'assets/icon/btn_adduser.png',
                                 width: 100,
-                                onTap: (){
+                                onTap: () async{
+                                  //todo 회원가입 시작
+                                  var id = idct.text;
+                                  var pw = pwct.text;
+                                  var pwchk = pwchkct.text;
+
+                                  if(id.length>2 && pw.length>2){
+                                    if(pw==pwchk){
+                                     var result = await UserHttp.add(
+                                         user: User(
+                                            id:id,
+                                            pw:pw
+                                         )
+                                     );
+
+                                     if(result=='ok'){
+                                       showToast('회원가입 완료!');
+                                       Navigator.pop(context);
+                                     }else if(result=='dp'){
+                                       showToast('이미 가입된 아이디 입니다.');
+                                     }
+
+
+                                    }else{
+                                      showToast('비밀번호가 일치하지 않습니다');
+                                    }
+
+
+
+                                  }else{
+                                    showToast('모든 정보를 입력하세요');
+                                  }
+
 
                                 }
                             )

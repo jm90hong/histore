@@ -1,6 +1,10 @@
 
 import 'package:flutter/material.dart';
+import 'package:histore/model/user_model.dart';
+import 'package:histore/screen/home_screen.dart';
+import 'package:histore/vo/user.dart';
 import 'package:histore/widget/app_widget.dart';
+import 'package:provider/provider.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -96,7 +100,23 @@ class _LoginScreenState extends State<LoginScreen> {
                          SimpleButton(
                              imagePath: 'assets/icon/btn_login.png',
                              width: 100,
-                             onTap: (){
+                             onTap: () async{
+                                var id = idct.text;
+                                var pw = pwct.text;
+
+
+                                User u = await Provider.of<UserModel>(context,listen: false).login(user: User(
+                                  id:id,
+                                  pw:pw
+                                ));
+
+                                if(u.userIdx!=0){
+                                  showToast('${u.id} 님 반갑습니다.');
+                                  //pop until
+                                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          HomeScreen()), (route) => false);
+                                }
 
                              }
                          )
