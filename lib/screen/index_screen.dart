@@ -55,7 +55,7 @@ class _IndexScreenState extends State<IndexScreen> {
                     imagePath: 'assets/icon/btn_login.png',
                     width: 100,
                     onTap: (){
-                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: LoginScreen()));
+                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: AddUserScreen()));
                     },
                   ),
                   SizedBox(width: 50,),

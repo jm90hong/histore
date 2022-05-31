@@ -7,13 +7,13 @@ import 'package:page_transition/page_transition.dart';
 
 import 'home_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+class AddUserScreen extends StatefulWidget {
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _AddUserScreenState createState() => _AddUserScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _AddUserScreenState extends State<AddUserScreen> {
 
 
   TextStyle ts1 = const TextStyle(color: Colors.white,fontWeight: FontWeight.normal,fontFamily: 'dx',fontSize: 14);
