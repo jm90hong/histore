@@ -36,7 +36,7 @@ class UserHttp{
     var response = await http.get(urlParam);
     if(response.body.isNotEmpty){
       var json = jsonDecode(response.body);
-      return User.formJson(json);
+      return User.fromJson(json);
     }else{
       return User();
     }
