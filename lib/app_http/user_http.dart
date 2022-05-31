@@ -11,13 +11,14 @@ class UserHttp{
     required User user
   }) async{
 
-    var requestUrl = apiAddress+'user/add';
+    var requestUrl = apiAddress+'/user/add';
     Uri uri = Uri.parse(requestUrl);
     var urlParam = uri.replace(queryParameters: {
       'id':user.id.toString(),
       'pw':user.pw.toString()
     });
     var response = await http.get(urlParam);
+
     return response.body;
   }
 
@@ -27,7 +28,7 @@ class UserHttp{
     required User user
   }) async{
 
-    var requestUrl = apiAddress+'user/getUserByIdAndPw';
+    var requestUrl = apiAddress+'/user/getUserByIdAndPw';
     Uri uri = Uri.parse(requestUrl);
     var urlParam = uri.replace(queryParameters: {
       'id':user.id.toString(),
@@ -36,7 +37,7 @@ class UserHttp{
     var response = await http.get(urlParam);
     if(response.body.isNotEmpty){
       var json = jsonDecode(response.body);
-      return User.formJson(json);
+      return User.fromJson(json);
     }else{
       return User();
     }

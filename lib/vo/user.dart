@@ -1,6 +1,7 @@
 
 
 
+
 class User {
 
   int userIdx=0;
@@ -9,25 +10,22 @@ class User {
   String regDate='';
 
 
+
   User({
     this.userIdx=0,
-    this.id='',
     this.regDate='',
+    this.id='',
     this.pw=''
   });
 
 
-
-  factory User.formJson(Map<String, dynamic> json){
+  factory User.fromJson(Map<String, dynamic> json){
     return User(
       userIdx: json['user_idx'],
       id: json['id'],
       pw: json['pw'],
       regDate: json['reg_date']
     );
+
   }
-
-
-
-
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:histore/screen/login_screen.dart';
+import 'package:histore/screen/add_user_screen.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
 
 import 'home_screen.dart';
+import 'login_screen.dart';
 
 class IndexScreen extends StatefulWidget {
   @override
@@ -44,33 +45,36 @@ class _IndexScreenState extends State<IndexScreen> {
           ),
           width: double.infinity,
           height: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/icon/logo.png',width: 300,),
-              SizedBox(height: 30,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SimpleButton(
-                    imagePath: 'assets/icon/btn_login.png',
-                    width: 100,
-                    onTap: (){
-                      Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: AddUserScreen()));
-                    },
-                  ),
-                  SizedBox(width: 50,),
-                  SimpleButton(
-                    imagePath: 'assets/icon/btn_adduser.png',
-                    width: 100,
-                    onTap: (){
-
-
-                    },
-                  ),
-                ],
-              )
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/icon/logo.png',width: 300,),
+                SizedBox(height: 30,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SimpleButton(
+                      imagePath: 'assets/icon/btn_login.png',
+                      width: 100,
+                      onTap: (){
+                        //로그인
+                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: LoginScreen()));
+                      },
+                    ),
+                    SizedBox(width: 50,),
+                    SimpleButton(
+                      imagePath: 'assets/icon/btn_adduser.png',
+                      width: 100,
+                      onTap: (){
+                        //회원가입
+                        Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: AddUserScreen()));
+                      },
+                    ),
+                  ],
+                )
+              ],
+            ),
           )
       ),
     );

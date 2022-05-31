@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:histore/screen/index_screen.dart';
-import 'package:histore/screen/login_screen.dart';
+import 'package:histore/screen/add_user_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'model/user_model.dart';
