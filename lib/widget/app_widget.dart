@@ -17,6 +17,31 @@ void showToast(String msg){
 }
 
 
+class BackgroundContainer extends StatelessWidget {
+
+  String imagePath;
+  Widget child;
+
+  BackgroundContainer({required this.imagePath,required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage(imagePath)
+          )
+      ),
+      width: double.infinity,
+      height: double.infinity,
+      child: child,
+    );
+  }
+}
+
+
+
 class AppInput extends StatelessWidget {
 
   double width;

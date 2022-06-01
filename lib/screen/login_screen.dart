@@ -1,7 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:histore/config/app_config.dart';
 import 'package:histore/model/user_model.dart';
 import 'package:histore/screen/home_screen.dart';
+import 'package:histore/screen/start_screen.dart';
 import 'package:histore/vo/user.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:provider/provider.dart';
@@ -101,22 +103,42 @@ class _LoginScreenState extends State<LoginScreen> {
                              imagePath: 'assets/icon/btn_login.png',
                              width: 100,
                              onTap: () async{
-                                var id = idct.text;
-                                var pw = pwct.text;
 
 
-                                User u = await Provider.of<UserModel>(context,listen: false).login(user: User(
-                                  id:id,
-                                  pw:pw
-                                ));
+                                var id;
+                                var pw;
 
-                                if(u.userIdx!=0){
-                                  showToast('${u.id} 님 반갑습니다.');
-                                  //pop until
-                                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          HomeScreen()), (route) => false);
+                                if(isDebug){
+                                  id='we1422';
+                                  pw='123qwe';
+                                }else{
+                                  id = idct.text;
+                                  pw = pwct.text;
+
                                 }
+
+                                if(id.length>2 && pw.length>2){
+                                  User u = await Provider.of<UserModel>(context,listen: false).login(user: User(
+                                      id:id,
+                                      pw:pw
+                                  ));
+
+                                  if(u.userIdx!=0){
+                                    showToast('${u.id} 님 반갑습니다.');
+                                    //pop until
+                                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            StartScreen()), (route) => false);
+                                  }else{
+                                    showToast('올바른 정보가 아닙니다.');
+                                  }
+                                }else{
+                                  showToast('아이디, 비밀번호를 입력하세요.');
+                                }
+
+
+
+
 
                              }
                          )
@@ -129,7 +151,6 @@ class _LoginScreenState extends State<LoginScreen> {
            ],
          ),
        ),
-
      ),
     );
   }
