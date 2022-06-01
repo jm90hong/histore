@@ -1,7 +1,4 @@
 
-
-
-
 class User {
 
   int userIdx=0;
