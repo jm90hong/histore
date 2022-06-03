@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:histore/screen/game/game2_screen.dart';
+import 'package:histore/screen/game_index_screen.dart';
 import 'package:histore/widget/app_widget.dart';
+import 'package:page_transition/page_transition.dart';
+
+import 'game/game1_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -41,7 +46,7 @@ class _ChatScreenState extends State<ChatScreen> {
       },
       {
         'sayer':'game',
-        'value':'game1'
+        'value':'game2'
       },
     ];
     msg=chatList[currentChatIndex]['value'];
@@ -114,9 +119,58 @@ class _ChatScreenState extends State<ChatScreen> {
                           onTap: (){
                             setState(() {
                               currentChatIndex++;
+                              if(chatList[currentChatIndex]['sayer'] == 'game'){
 
-                              msg = chatList[currentChatIndex]['value'];
-                              whoSay=chatList[currentChatIndex]['sayer'];
+                                var gameType = chatList[currentChatIndex]['value'];
+
+                                switch (gameType){
+                                  case 'game1':
+                                    Navigator.push(context, PageTransition(
+                                        type: PageTransitionType.fade,
+                                        child: GameIndexScreen(
+                                          episodeIndex: 1,
+                                          onStartTap: (){
+                                            Navigator.pushReplacement(context, PageTransition(
+                                                type: PageTransitionType.fade,
+                                                child: Game1Screen()));
+                                          },
+                                        )));
+                                    break;
+
+                                  case 'game2':
+                                    Navigator.push(context, PageTransition(
+                                        type: PageTransitionType.fade,
+                                        child: GameIndexScreen(
+                                          episodeIndex: 1,
+                                          onStartTap: (){
+                                            Navigator.pushReplacement(context, PageTransition(
+                                                type: PageTransitionType.fade,
+                                                child: Game2Screen()));
+                                          },
+                                        )));
+                                    break;
+
+                                  case 'game3':
+                                    break;
+
+                                  case 'game4':
+                                    break;
+
+                                }
+
+
+
+
+
+                                currentChatIndex++;
+                              }else{
+                                whoSay=chatList[currentChatIndex]['sayer'];
+                                msg = chatList[currentChatIndex]['value'];
+                              }
+
+
+
+
                             });
                           }
                       ),

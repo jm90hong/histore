@@ -1,36 +1,37 @@
+
 import 'package:flutter/material.dart';
 import 'package:histore/widget/app_widget.dart';
 
-class GameIndexScreen extends StatefulWidget {
+class EpisodeIndexScreen extends StatefulWidget {
 
   int episodeIndex;
   Function onStartTap;
 
-  GameIndexScreen({Key? key,
+  EpisodeIndexScreen({Key? key,
     required this.episodeIndex,
     required this.onStartTap
   }) : super(key: key);
 
   @override
-  _GameIndexScreenState createState() => _GameIndexScreenState();
+  _EpisodeIndexScreenState createState() => _EpisodeIndexScreenState();
 }
 
-class _GameIndexScreenState extends State<GameIndexScreen> {
+class _EpisodeIndexScreenState extends State<EpisodeIndexScreen> {
 
 
   var titleMap = {
-    1:'광개토대왕 유서 찾기',
-    2:'게임2',
-    3:'게임3',
-    4:'게임4'
+    1:'장수왕의 평양천도',
+    2:'이성계의 회군',
+    3:'임진왜란',
+    4:'을지문덕 대전투'
   };
 
 
   var contentMap={
-    1:'광개토대왕 유서 찾기\n내용',
-    2:'게임2\n내용',
-    3:'게임3\n내용',
-    4:'게임4\n내용',
+    1:'장수와의평양천도\n내용',
+    2:'이성계의 회군\n내용',
+    3:'임진왜란\n내용',
+    4:'을지문덕 대전투\n내용',
   };
 
 

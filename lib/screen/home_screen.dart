@@ -7,6 +7,8 @@ import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
+import 'episode_index_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -100,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
         if(isOpen){
           showToast('$gameName 에 입장 합니다.');
           Navigator.push(context, PageTransition(type: PageTransitionType.fade,
-              child: GameIndexScreen(
+              child: EpisodeIndexScreen(
                 episodeIndex: episodeIndex,
                 onStartTap: (){
                   Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: ChatScreen()));
