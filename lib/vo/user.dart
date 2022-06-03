@@ -5,10 +5,10 @@ class User {
   String id='';
   String pw='';
   String regDate='';
-  String stage1 = '';
-  String stage2 = '';
-  String stage3 = '';
-  String stage4 = '';
+  String epi1 = '';
+  String epi2 = '';
+  String epi3 = '';
+  String epi4 = '';
 
 
   User({
@@ -16,10 +16,10 @@ class User {
     this.regDate='',
     this.id='',
     this.pw='',
-    this.stage1='',
-    this.stage2='',
-    this.stage3='',
-    this.stage4=''
+    this.epi1='',
+    this.epi2='',
+    this.epi3='',
+    this.epi4=''
   });
 
 
@@ -29,10 +29,10 @@ class User {
       id: json['id'],
       pw: json['pw'],
       regDate: json['reg_date'],
-      stage1: json['stage1'],
-      stage2: json['stage2'],
-      stage3: json['stage3'],
-      stage4: json['stage4'],
+      epi1: json['epi1'],
+      epi2: json['epi2'],
+      epi3: json['epi3'],
+      epi4: json['epi4'],
     );
 
   }
