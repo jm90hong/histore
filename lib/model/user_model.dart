@@ -18,4 +18,14 @@ class UserModel extends ChangeNotifier{
 
 
 
+  void resetMe(){
+    notifyListeners();
+  }
+
+  void test(){
+    notifyListeners();
+  }
+
+
+
 }

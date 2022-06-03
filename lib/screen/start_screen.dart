@@ -38,7 +38,6 @@ class _StartScreenState extends State<StartScreen> {
                   imagePath: 'assets/icon/btn_start.png',
                   width: 100,
                   onTap: (){
-                    showToast('게임 입장');
                     Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: HomeScreen()));
                   },
                 ),
