@@ -51,6 +51,7 @@ class _ChatScreenState extends State<ChatScreen> {
     ];
     msg=chatList[currentChatIndex]['value'];
 
+
     print(chatList);
   }
 
