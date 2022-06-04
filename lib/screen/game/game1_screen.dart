@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:histore/widget/app_widget.dart';
 
 
 
@@ -14,9 +15,13 @@ class _Game1ScreenState extends State<Game1Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
+      body: BackgroundContainer(
+        imagePath: 'assets/background/royal_bg_game.jpg',
+        child: Column(
+          children: [
+
+          ],
+        ),
 
       ),
     );

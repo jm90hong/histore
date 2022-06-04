@@ -46,7 +46,7 @@ class _ChatScreenState extends State<ChatScreen> {
       },
       {
         'sayer':'game',
-        'value':'game2'
+        'value':'game1'
       },
     ];
     msg=chatList[currentChatIndex]['value'];
