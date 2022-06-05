@@ -17,6 +17,32 @@ void showToast(String msg){
 }
 
 
+class RedCircleBox extends StatelessWidget {
+
+  double size;
+  bool isActive;
+
+  RedCircleBox({
+    required this.size,
+    required this.isActive
+  });
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(size/2),
+        border: Border.all(color: isActive ? Colors.red : Colors.transparent, width: 6)
+      ),
+    );
+  }
+}
+
+
 class BackgroundContainer extends StatelessWidget {
 
   String imagePath;

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:histore/model/game_result_model.dart';
 import 'package:histore/screen/game/game2_screen.dart';
 import 'package:histore/screen/game_index_screen.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 import 'game/game1_screen.dart';
 
@@ -18,6 +20,9 @@ class _ChatScreenState extends State<ChatScreen> {
   String whoSay = '대한';
   int currentChatIndex=0;
   String msg='';
+  bool isStartGame=false;
+
+
 
   List<Map> chatList = [];
 
@@ -63,7 +68,19 @@ class _ChatScreenState extends State<ChatScreen> {
         imagePath: 'assets/background/bg4.png',
         child: Stack(
           alignment: Alignment.center,
-          children: [
+          children: [ //todo 캐릭터
+            Positioned(
+                bottom: -50,
+                left: 120,
+                child: Image.asset('assets/image/a.png',width: 170,fit: BoxFit.cover,)
+            ),
+
+            Positioned(
+                bottom: -50,
+                right: 120,
+                child: Image.asset('assets/image/b.png',width: 170,fit: BoxFit.cover,)
+            ),
+
             Positioned(
               bottom: 30,
               child: Container(
@@ -83,6 +100,8 @@ class _ChatScreenState extends State<ChatScreen> {
                         child: Text(msg),
                       ),
                     ),
+
+
 
                     Positioned(
                       top: 5,
@@ -114,66 +133,76 @@ class _ChatScreenState extends State<ChatScreen> {
                     Positioned(
                       right: 10,
                       bottom: 0,
-                      child: SimpleButton(
-                          imagePath: 'assets/icon/btn_right.png',
-                          width: 33,
-                          onTap: (){
-                            setState(() {
-                              currentChatIndex++;
-                              if(chatList[currentChatIndex]['sayer'] == 'game'){
+                      child: Consumer<GameResultModel>(
+                        builder: (context, resultModel, child){
 
-                                var gameType = chatList[currentChatIndex]['value'];
-
-                                switch (gameType){
-                                  case 'game1':
-                                    Navigator.push(context, PageTransition(
-                                        type: PageTransitionType.fade,
-                                        child: GameIndexScreen(
-                                          episodeIndex: 1,
-                                          onStartTap: (){
-                                            Navigator.pushReplacement(context, PageTransition(
-                                                type: PageTransitionType.fade,
-                                                child: Game1Screen()));
-                                          },
-                                        )));
-                                    break;
-
-                                  case 'game2':
-                                    Navigator.push(context, PageTransition(
-                                        type: PageTransitionType.fade,
-                                        child: GameIndexScreen(
-                                          episodeIndex: 1,
-                                          onStartTap: (){
-                                            Navigator.pushReplacement(context, PageTransition(
-                                                type: PageTransitionType.fade,
-                                                child: Game2Screen()));
-                                          },
-                                        )));
-                                    break;
-
-                                  case 'game3':
-                                    break;
-
-                                  case 'game4':
-                                    break;
-
-                                }
-
-
-
-
-
-                                currentChatIndex++;
-                              }else{
-                                whoSay=chatList[currentChatIndex]['sayer'];
-                                msg = chatList[currentChatIndex]['value'];
-                              }
-
-
-
-
-                            });
+                          if(!resultModel.game1Result&&currentChatIndex==5){
+                            currentChatIndex=3;
                           }
+
+
+                          return SimpleButton(
+                              imagePath: 'assets/icon/btn_right.png',
+                              width: 33,
+                              onTap: (){
+                                setState(() {
+                                  currentChatIndex++;
+                                  if(chatList[currentChatIndex]['sayer'] == 'game'){
+
+                                    var gameType = chatList[currentChatIndex]['value'];
+
+                                    switch (gameType){
+                                      case 'game1':
+                                        Navigator.push(context, PageTransition(
+                                            type: PageTransitionType.fade,
+                                            child: GameIndexScreen(
+                                              episodeIndex: 1,
+                                              onStartTap: (){
+                                                Navigator.pushReplacement(context, PageTransition(
+                                                    type: PageTransitionType.fade,
+                                                    child: Game1Screen()));
+                                              },
+                                            )));
+                                        break;
+
+                                      case 'game2':
+                                        Navigator.push(context, PageTransition(
+                                            type: PageTransitionType.fade,
+                                            child: GameIndexScreen(
+                                              episodeIndex: 1,
+                                              onStartTap: (){
+                                                Navigator.pushReplacement(context, PageTransition(
+                                                    type: PageTransitionType.fade,
+                                                    child: Game2Screen()));
+                                              },
+                                            )));
+                                        break;
+
+                                      case 'game3':
+                                        break;
+
+                                      case 'game4':
+                                        break;
+
+                                    }
+
+
+
+
+                                    currentChatIndex++;
+                                  }else{
+                                    whoSay=chatList[currentChatIndex]['sayer'];
+                                    msg = chatList[currentChatIndex]['value'];
+                                  }
+
+
+
+
+                                });
+                              }
+                          );
+
+                        },
                       ),
                     )
 

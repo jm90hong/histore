@@ -43,13 +43,14 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 10,),
               Container(
                 width: double.infinity,
+
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Consumer<UserModel>(
                     builder: (context, userModel, child){
                       return Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           buildGameStageCard(
                               episodeIndex: 1,
