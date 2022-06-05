@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 
 import 'game/game1_screen.dart';
 import 'game/game3_screen.dart';
+import 'game/game4_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -30,6 +31,7 @@ class _ChatScreenState extends State<ChatScreen> {
   int _game1Index=4;
   int _game2Index=10;
   int _game3Index=16;
+  int _game4Index=20;
 
   @override
   void initState() {
@@ -108,6 +110,22 @@ class _ChatScreenState extends State<ChatScreen> {
       {
         'sayer':b,
         'value':'정말 대단하군.. 게임3을 성공했구나!'
+      },
+      {
+        'sayer':b,
+        'value':'바로 게임4를 시작하지..'
+      },
+      {
+        'sayer':a,
+        'value':'좋아요!'
+      },
+      {
+        'sayer':'game',
+        'value':'game4'
+      },
+      {
+        'sayer':b,
+        'value':'정말 대단하군.. 게임4을 성공했구나!'
       },
 
     ];
@@ -270,6 +288,25 @@ class _ChatScreenState extends State<ChatScreen> {
                                         break;
 
                                       case 'game4':
+                                        Navigator.push(context, PageTransition(
+                                            type: PageTransitionType.fade,
+                                            child: GameIndexScreen(
+                                              episodeIndex: 4,
+                                              onStartTap: () async{
+                                                var result =  await Navigator.pushReplacement(context, PageTransition(
+                                                    type: PageTransitionType.fade,
+                                                    child: Game4Screen()));
+
+                                                if(result=='ok'){
+                                                  setState(() {
+                                                    currentChatIndex=_game4Index+1;
+                                                    whoSay=chatList[currentChatIndex]['sayer'];
+                                                    msg = chatList[currentChatIndex]['value'];
+                                                  });
+                                                }
+
+                                              },
+                                            )));
                                         break;
 
                                     }
