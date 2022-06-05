@@ -53,11 +53,13 @@ class _ChatScreenState extends State<ChatScreen> {
         'sayer':'game',
         'value':'game1'
       },
+      {
+        'sayer':b,
+        'value':'대단하군.. 게임1을 성공했구나!'
+      },
     ];
     msg=chatList[currentChatIndex]['value'];
 
-
-    print(chatList);
   }
 
 
@@ -136,6 +138,8 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: Consumer<GameResultModel>(
                         builder: (context, resultModel, child){
 
+                          print(resultModel.game1Result);
+                          print(currentChatIndex);
                           if(!resultModel.game1Result&&currentChatIndex==5){
                             currentChatIndex=3;
                           }
@@ -147,6 +151,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               onTap: (){
                                 setState(() {
                                   currentChatIndex++;
+                                  print('c1 : '+currentChatIndex.toString());
                                   if(chatList[currentChatIndex]['sayer'] == 'game'){
 
                                     var gameType = chatList[currentChatIndex]['value'];
@@ -160,7 +165,8 @@ class _ChatScreenState extends State<ChatScreen> {
                                               onStartTap: (){
                                                 Navigator.pushReplacement(context, PageTransition(
                                                     type: PageTransitionType.fade,
-                                                    child: Game1Screen()));
+                                                    child: Game1Screen()
+                                                ));
                                               },
                                             )));
                                         break;
@@ -190,6 +196,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
 
                                     currentChatIndex++;
+                                    print('c2 : '+currentChatIndex.toString());
                                   }else{
                                     whoSay=chatList[currentChatIndex]['sayer'];
                                     msg = chatList[currentChatIndex]['value'];

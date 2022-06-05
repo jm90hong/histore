@@ -26,6 +26,7 @@ class _Game1ScreenState extends State<Game1Screen> {
     if(found1 && found2 && found3 && found4){
       Provider.of<GameResultModel>(context,listen: false).makeGameComplete(gameType: 'game1');
       showToast('게임 성공!');
+      Navigator.pop(context);
     }
     Provider.of<GameResultModel>(context,listen: false).refresh();
   }
