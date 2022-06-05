@@ -7,6 +7,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import 'game/game1_screen.dart';
+import 'game/game3_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -26,8 +27,9 @@ class _ChatScreenState extends State<ChatScreen> {
 
   List<Map> chatList = [];
 
-  int _game1Index=5;
+  int _game1Index=4;
   int _game2Index=10;
+  int _game3Index=16;
 
   @override
   void initState() {
@@ -73,7 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
       },
       {
         'sayer':b,
-        'value':'대화2-14'
+        'value':'대화2-4'
       },
       {
         'sayer':'game',
@@ -82,6 +84,30 @@ class _ChatScreenState extends State<ChatScreen> {
       {
         'sayer':b,
         'value':'오 대단하군.. 게임2을 성공했구나!'
+      },
+      {
+        'sayer':a,
+        'value':'대화3-1'
+      },
+      {
+        'sayer':a,
+        'value':'대화3-2'
+      },
+      {
+        'sayer':a,
+        'value':'대화3-3'
+      },
+      {
+        'sayer':a,
+        'value':'대화3-4'
+      },
+      {
+        'sayer':'game',
+        'value':'game3'
+      },
+      {
+        'sayer':b,
+        'value':'정말 대단하군.. 게임3을 성공했구나!'
       },
 
     ];
@@ -188,7 +214,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                                 ));
                                                 if(result=='ok'){
                                                   setState(() {
-                                                    currentChatIndex=_game1Index;
+                                                    currentChatIndex=_game1Index+1;
                                                     whoSay=chatList[currentChatIndex]['sayer'];
                                                     msg = chatList[currentChatIndex]['value'];
                                                   });
@@ -202,18 +228,45 @@ class _ChatScreenState extends State<ChatScreen> {
                                         Navigator.push(context, PageTransition(
                                             type: PageTransitionType.fade,
                                             child: GameIndexScreen(
-                                              episodeIndex: 1,
+                                              episodeIndex: 2,
                                               onStartTap: () async{
                                                var result =  await Navigator.pushReplacement(context, PageTransition(
                                                     type: PageTransitionType.fade,
                                                     child: Game2Screen()));
 
+                                               if(result=='ok'){
+                                                 setState(() {
+                                                   currentChatIndex=_game2Index+1;
+                                                   whoSay=chatList[currentChatIndex]['sayer'];
+                                                   msg = chatList[currentChatIndex]['value'];
+                                                 });
+                                               }
 
                                               },
                                             )));
                                         break;
 
                                       case 'game3':
+
+                                        Navigator.push(context, PageTransition(
+                                            type: PageTransitionType.fade,
+                                            child: GameIndexScreen(
+                                              episodeIndex: 3,
+                                              onStartTap: () async{
+                                                var result =  await Navigator.pushReplacement(context, PageTransition(
+                                                    type: PageTransitionType.fade,
+                                                    child: Game3Screen()));
+
+                                                if(result=='ok'){
+                                                  setState(() {
+                                                    currentChatIndex=_game3Index+1;
+                                                    whoSay=chatList[currentChatIndex]['sayer'];
+                                                    msg = chatList[currentChatIndex]['value'];
+                                                  });
+                                                }
+
+                                              },
+                                            )));
                                         break;
 
                                       case 'game4':

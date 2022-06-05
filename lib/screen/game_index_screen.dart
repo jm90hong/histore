@@ -20,16 +20,16 @@ class _GameIndexScreenState extends State<GameIndexScreen> {
 
   var titleMap = {
     1:'광개토대왕 유서 찾기',
-    2:'게임2',
-    3:'게임3',
+    2:'직속하인 찾기',
+    3:'평양 잠정 탐색',
     4:'게임4'
   };
 
 
   var contentMap={
     1:'광개토대왕 유서 찾기\n내용',
-    2:'게임2\n내용',
-    3:'게임3\n내용',
+    2:'직속하인 찾기\n내용',
+    3:'평양 잠정 탐색\n내용',
     4:'게임4\n내용',
   };
 

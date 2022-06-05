@@ -14,10 +14,10 @@ class Game2Screen extends StatefulWidget {
 class _Game2ScreenState extends State<Game2Screen> {
 
 
-  bool found1 = true;
-  bool found2 = true;
-  bool found3 = true;
-  bool found4 = true;
+  bool found1 = false;
+  bool found2 = false;
+  bool found3 = false;
+  bool found4 = false;
 
 
 
@@ -46,8 +46,8 @@ class _Game2ScreenState extends State<Game2Screen> {
               children: [
                 //todo 1
                 Positioned(
-                  top: 135,
-                  left: 55,
+                  top: 182,
+                  left: 155,
                   child: GestureDetector(
                     onTap: (){
                       setState(() {
@@ -57,7 +57,7 @@ class _Game2ScreenState extends State<Game2Screen> {
                       showToast('하인1 발견!');
                     },
                     child: RedCircleBox(
-                      size: 60,
+                      size: 120,
                       isActive: found1,
                     ),
                   ),
@@ -65,8 +65,8 @@ class _Game2ScreenState extends State<Game2Screen> {
 
                 //todo 1
                 Positioned(
-                  top: 190,
-                  left: 120,
+                  top: 45,
+                  left: 380,
                   child: GestureDetector(
                     onTap: (){
                       setState(() {
@@ -76,15 +76,15 @@ class _Game2ScreenState extends State<Game2Screen> {
                       showToast('하인2 발견!');
                     },
                     child: RedCircleBox(
-                      size: 60,
+                      size: 100,
                       isActive: found2,
                     ),
                   ),
                 ),
 
                 Positioned(
-                  bottom: 50,
-                  left: 330,
+                  top: 120,
+                  left: 440,
                   child: GestureDetector(
                     onTap: (){
                       setState(() {
@@ -94,15 +94,15 @@ class _Game2ScreenState extends State<Game2Screen> {
                       showToast('하인3 발견!');
                     },
                     child: RedCircleBox(
-                      size: 60,
+                      size: 130,
                       isActive: found3,
                     ),
                   ),
                 ),
 
                 Positioned(
-                  bottom: 51,
-                  right: 20,
+                  top: 50,
+                  right: 12,
                   child: GestureDetector(
                     onTap: (){
                       setState(() {
@@ -112,7 +112,7 @@ class _Game2ScreenState extends State<Game2Screen> {
                       showToast('하인4 발견!');
                     },
                     child: RedCircleBox(
-                      size: 60,
+                      size: 130,
                       isActive: found4,
                     ),
                   ),
