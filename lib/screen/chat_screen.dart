@@ -26,7 +26,8 @@ class _ChatScreenState extends State<ChatScreen> {
 
   List<Map> chatList = [];
 
-
+  int _game1Index=5;
+  int _game2Index=10;
 
   @override
   void initState() {
@@ -35,19 +36,19 @@ class _ChatScreenState extends State<ChatScreen> {
     chatList = [
       {
         'sayer':a,
-        'value':'대화1'
+        'value':'대화1-1'
       },
       {
         'sayer':b,
-        'value':'대화2'
+        'value':'대화1-2'
       },
       {
         'sayer':a,
-        'value':'대화3'
+        'value':'대화1-3'
       },
       {
         'sayer':b,
-        'value':'대화4'
+        'value':'대화1-4'
       },
       {
         'sayer':'game',
@@ -57,6 +58,32 @@ class _ChatScreenState extends State<ChatScreen> {
         'sayer':b,
         'value':'대단하군.. 게임1을 성공했구나!'
       },
+
+      {
+        'sayer':a,
+        'value':'대화2-1'
+      },
+      {
+        'sayer':b,
+        'value':'대화2-2'
+      },
+      {
+        'sayer':a,
+        'value':'대화2-3'
+      },
+      {
+        'sayer':b,
+        'value':'대화2-14'
+      },
+      {
+        'sayer':'game',
+        'value':'game2'
+      },
+      {
+        'sayer':b,
+        'value':'오 대단하군.. 게임2을 성공했구나!'
+      },
+
     ];
     msg=chatList[currentChatIndex]['value'];
 
@@ -138,20 +165,12 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: Consumer<GameResultModel>(
                         builder: (context, resultModel, child){
 
-                          print(resultModel.game1Result);
-                          print(currentChatIndex);
-                          if(!resultModel.game1Result&&currentChatIndex==5){
-                            currentChatIndex=3;
-                          }
-
-
                           return SimpleButton(
                               imagePath: 'assets/icon/btn_right.png',
                               width: 33,
                               onTap: (){
                                 setState(() {
                                   currentChatIndex++;
-                                  print('c1 : '+currentChatIndex.toString());
                                   if(chatList[currentChatIndex]['sayer'] == 'game'){
 
                                     var gameType = chatList[currentChatIndex]['value'];
@@ -162,11 +181,19 @@ class _ChatScreenState extends State<ChatScreen> {
                                             type: PageTransitionType.fade,
                                             child: GameIndexScreen(
                                               episodeIndex: 1,
-                                              onStartTap: (){
-                                                Navigator.pushReplacement(context, PageTransition(
+                                              onStartTap: () async{
+                                                var result= await Navigator.pushReplacement(context, PageTransition(
                                                     type: PageTransitionType.fade,
                                                     child: Game1Screen()
                                                 ));
+                                                if(result=='ok'){
+                                                  setState(() {
+                                                    currentChatIndex=_game1Index;
+                                                    whoSay=chatList[currentChatIndex]['sayer'];
+                                                    msg = chatList[currentChatIndex]['value'];
+                                                  });
+                                                }
+
                                               },
                                             )));
                                         break;
@@ -176,10 +203,12 @@ class _ChatScreenState extends State<ChatScreen> {
                                             type: PageTransitionType.fade,
                                             child: GameIndexScreen(
                                               episodeIndex: 1,
-                                              onStartTap: (){
-                                                Navigator.pushReplacement(context, PageTransition(
+                                              onStartTap: () async{
+                                               var result =  await Navigator.pushReplacement(context, PageTransition(
                                                     type: PageTransitionType.fade,
                                                     child: Game2Screen()));
+
+
                                               },
                                             )));
                                         break;
@@ -191,12 +220,6 @@ class _ChatScreenState extends State<ChatScreen> {
                                         break;
 
                                     }
-
-
-
-
-                                    currentChatIndex++;
-                                    print('c2 : '+currentChatIndex.toString());
                                   }else{
                                     whoSay=chatList[currentChatIndex]['sayer'];
                                     msg = chatList[currentChatIndex]['value'];

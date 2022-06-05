@@ -5,6 +5,8 @@ import 'package:histore/model/game_result_model.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:provider/provider.dart';
 
+import 'game1_success_screen.dart';
+
 
 
 //todo 광개토 대왕 유서 찾기
@@ -22,13 +24,17 @@ class _Game1ScreenState extends State<Game1Screen> {
 
 
 
-  void _check(){
+  void _check() async{
     if(found1 && found2 && found3 && found4){
       Provider.of<GameResultModel>(context,listen: false).makeGameComplete(gameType: 'game1');
       showToast('게임 성공!');
-      Navigator.pop(context);
+      await Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Game1SuccessScreen()),
+      );
+      Navigator.pop(context,"ok");
     }
-    Provider.of<GameResultModel>(context,listen: false).refresh();
+
   }
 
 
@@ -40,7 +46,8 @@ class _Game1ScreenState extends State<Game1Screen> {
 
     return WillPopScope(
       onWillPop: () async{
-        _check();
+        Navigator.pop(context,"ok");
+        Provider.of<GameResultModel>(context,listen: false).refresh();
         return true;
       },
       child: Scaffold(
