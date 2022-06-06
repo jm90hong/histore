@@ -236,6 +236,12 @@ class _ChatScreenState extends State<ChatScreen> {
                                                     whoSay=chatList[currentChatIndex]['sayer'];
                                                     msg = chatList[currentChatIndex]['value'];
                                                   });
+                                                }else{
+                                                  setState(() {
+                                                    currentChatIndex=_game1Index-1;
+                                                    whoSay=chatList[currentChatIndex]['sayer'];
+                                                    msg = chatList[currentChatIndex]['value'];
+                                                  });
                                                 }
 
                                               },
@@ -255,6 +261,12 @@ class _ChatScreenState extends State<ChatScreen> {
                                                if(result=='ok'){
                                                  setState(() {
                                                    currentChatIndex=_game2Index+1;
+                                                   whoSay=chatList[currentChatIndex]['sayer'];
+                                                   msg = chatList[currentChatIndex]['value'];
+                                                 });
+                                               }else{
+                                                 setState(() {
+                                                   currentChatIndex=_game2Index-1;
                                                    whoSay=chatList[currentChatIndex]['sayer'];
                                                    msg = chatList[currentChatIndex]['value'];
                                                  });
@@ -281,6 +293,12 @@ class _ChatScreenState extends State<ChatScreen> {
                                                     whoSay=chatList[currentChatIndex]['sayer'];
                                                     msg = chatList[currentChatIndex]['value'];
                                                   });
+                                                }else{
+                                                  setState(() {
+                                                    currentChatIndex=_game3Index-1;
+                                                    whoSay=chatList[currentChatIndex]['sayer'];
+                                                    msg = chatList[currentChatIndex]['value'];
+                                                  });
                                                 }
 
                                               },
@@ -303,6 +321,10 @@ class _ChatScreenState extends State<ChatScreen> {
                                                     whoSay=chatList[currentChatIndex]['sayer'];
                                                     msg = chatList[currentChatIndex]['value'];
                                                   });
+                                                }else if(result=='fail'){
+                                                  currentChatIndex=_game1Index-1;
+                                                  whoSay=chatList[currentChatIndex]['sayer'];
+                                                  msg = chatList[currentChatIndex]['value'];
                                                 }
 
                                               },

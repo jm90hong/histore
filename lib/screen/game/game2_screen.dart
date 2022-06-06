@@ -15,14 +15,12 @@ class _Game2ScreenState extends State<Game2Screen> {
 
 
   bool found1 = false;
-  bool found2 = false;
-  bool found3 = false;
-  bool found4 = false;
+
 
 
 
   void _check() {
-    if(found1 && found2 && found3 && found4){
+    if(found1){
       Provider.of<GameResultModel>(context,listen: false).makeGameComplete(gameType: 'game2');
       showToast('게임 성공!');
       Navigator.pop(context,"ok");
@@ -34,7 +32,12 @@ class _Game2ScreenState extends State<Game2Screen> {
   Widget build(BuildContext context) {
     return  WillPopScope(
       onWillPop: () async{
-        Navigator.pop(context,"ok");
+        if(found1){
+          Navigator.pop(context,"ok");
+        }else{
+          Navigator.pop(context,"fail");
+        }
+
         Provider.of<GameResultModel>(context,listen: false).refresh();
         return true;
       },
@@ -44,79 +47,24 @@ class _Game2ScreenState extends State<Game2Screen> {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                //todo 1
-                Positioned(
-                  top: 182,
-                  left: 155,
-                  child: GestureDetector(
-                    onTap: (){
-                      setState(() {
-                        found1=true;
-                        _check();
-                      });
-                      showToast('하인1 발견!');
-                    },
-                    child: RedCircleBox(
-                      size: 120,
-                      isActive: found1,
-                    ),
-                  ),
-                ),
-
-                //todo 1
-                Positioned(
-                  top: 45,
-                  left: 380,
-                  child: GestureDetector(
-                    onTap: (){
-                      setState(() {
-                        found2=true;
-                        _check();
-                      });
-                      showToast('하인2 발견!');
-                    },
-                    child: RedCircleBox(
-                      size: 100,
-                      isActive: found2,
-                    ),
-                  ),
-                ),
-
                 Positioned(
                   top: 120,
                   left: 440,
                   child: GestureDetector(
                     onTap: (){
                       setState(() {
-                        found3=true;
+                        found1=true;
                         _check();
                       });
-                      showToast('하인3 발견!');
+                      showToast('직속 하인 발견!');
                     },
                     child: RedCircleBox(
                       size: 130,
-                      isActive: found3,
+                      isActive: found1,
                     ),
                   ),
                 ),
 
-                Positioned(
-                  top: 50,
-                  right: 12,
-                  child: GestureDetector(
-                    onTap: (){
-                      setState(() {
-                        found4=true;
-                        _check();
-                      });
-                      showToast('하인4 발견!');
-                    },
-                    child: RedCircleBox(
-                      size: 130,
-                      isActive: found4,
-                    ),
-                  ),
-                ),
               ],
             )
         ),

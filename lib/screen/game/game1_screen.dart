@@ -46,7 +46,12 @@ class _Game1ScreenState extends State<Game1Screen> {
 
     return WillPopScope(
       onWillPop: () async{
-        Navigator.pop(context,"ok");
+        if(found1 && found2 && found3 && found4){
+          Navigator.pop(context,"ok");
+        }else{
+          Navigator.pop(context,"fail");
+        }
+
         Provider.of<GameResultModel>(context,listen: false).refresh();
         return true;
       },

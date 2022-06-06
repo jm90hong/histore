@@ -12,8 +12,8 @@ class Game3Screen extends StatefulWidget {
 
 class _Game3ScreenState extends State<Game3Screen> {
 
-  bool found1 = true;
-  bool found2 = true;
+  bool found1 = false;
+  bool found2 = false;
 
   void _check() {
     if(found1 && found2){
@@ -28,7 +28,12 @@ class _Game3ScreenState extends State<Game3Screen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async{
-        Navigator.pop(context,"ok");
+        if(found1 && found2){
+          Navigator.pop(context,"ok");
+        }else{
+          Navigator.pop(context,"fail");
+        }
+
         Provider.of<GameResultModel>(context,listen: false).refresh();
         return true;
       },
