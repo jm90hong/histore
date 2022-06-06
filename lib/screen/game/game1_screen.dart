@@ -35,7 +35,6 @@ class _Game1ScreenState extends State<Game1Screen> {
       );
       Navigator.pop(context,"ok");
     }
-
   }
 
 

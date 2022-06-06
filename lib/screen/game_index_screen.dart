@@ -22,7 +22,8 @@ class _GameIndexScreenState extends State<GameIndexScreen> {
     1:'광개토대왕 유서 찾기',
     2:'직속하인 찾기',
     3:'평양 잠정 탐색',
-    4:'게임4'
+    4:'토론배틀',
+    5:'최종추리'
   };
 
 
@@ -30,11 +31,9 @@ class _GameIndexScreenState extends State<GameIndexScreen> {
     1:'광개토대왕 유서 찾기\n내용',
     2:'직속하인 찾기\n내용',
     3:'평양 잠정 탐색\n내용',
-    4:'게임4\n내용',
+    4:'토론 배틀\n내용',
+    5:'최종추리\n내용'
   };
-
-
-
 
 
 

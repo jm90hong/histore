@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'game/game1_screen.dart';
 import 'game/game3_screen.dart';
 import 'game/game4_screen.dart';
+import 'game/game5_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -32,6 +33,7 @@ class _ChatScreenState extends State<ChatScreen> {
   int _game2Index=10;
   int _game3Index=16;
   int _game4Index=20;
+  int _game5Index=23;
 
   @override
   void initState() {
@@ -126,6 +128,14 @@ class _ChatScreenState extends State<ChatScreen> {
       {
         'sayer':b,
         'value':'정말 대단하군.. 게임4을 성공했구나!'
+      },
+      {
+        'sayer':b,
+        'value':'자 그럼 마지막으로 최종 추리를 해보지..'
+      },
+      {
+        'sayer':'game',
+        'value':'game5'
       },
 
     ];
@@ -322,7 +332,33 @@ class _ChatScreenState extends State<ChatScreen> {
                                                     msg = chatList[currentChatIndex]['value'];
                                                   });
                                                 }else if(result=='fail'){
-                                                  currentChatIndex=_game1Index-1;
+                                                  currentChatIndex=_game4Index-1;
+                                                  whoSay=chatList[currentChatIndex]['sayer'];
+                                                  msg = chatList[currentChatIndex]['value'];
+                                                }
+
+                                              },
+                                            )));
+                                        break;
+
+                                      case 'game5':
+                                        Navigator.push(context, PageTransition(
+                                            type: PageTransitionType.fade,
+                                            child: GameIndexScreen(
+                                              episodeIndex: 5,
+                                              onStartTap: () async{
+                                                var result =  await Navigator.pushReplacement(context, PageTransition(
+                                                    type: PageTransitionType.fade,
+                                                    child: Game5Screen()));
+
+                                                if(result=='ok'){
+                                                  setState(() {
+                                                    currentChatIndex=_game5Index+1;
+                                                    whoSay=chatList[currentChatIndex]['sayer'];
+                                                    msg = chatList[currentChatIndex]['value'];
+                                                  });
+                                                }else if(result=='fail'){
+                                                  currentChatIndex=_game5Index-1;
                                                   whoSay=chatList[currentChatIndex]['sayer'];
                                                   msg = chatList[currentChatIndex]['value'];
                                                 }
