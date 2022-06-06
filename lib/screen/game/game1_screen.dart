@@ -24,6 +24,7 @@ class _Game1ScreenState extends State<Game1Screen> {
 
 
 
+
   void _check() async{
     if(found1 && found2 && found3 && found4){
       Provider.of<GameResultModel>(context,listen: false).makeGameComplete(gameType: 'game1');
