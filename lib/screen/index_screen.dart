@@ -32,7 +32,6 @@ class _IndexScreenState extends State<IndexScreen> {
   }
 
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
