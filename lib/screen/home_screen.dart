@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:histore/model/user_model.dart';
 import 'package:histore/screen/chat_screen.dart';
 import 'package:histore/screen/game_index_screen.dart';
+import 'package:histore/screen/load_game_screen.dart';
 import 'package:histore/screen/my_screen.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
@@ -29,6 +30,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    SimpleButton(
+                        imagePath: 'assets/icon/btn_file.png',
+                        width: 50,
+                        onTap: (){
+                          //프로필 보기
+                          Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: LoadGameScreen()));
+                        }
+                    ),
+                    SizedBox(width: 16,),
                     SimpleButton(
                         imagePath: 'assets/icon/btn_profile.png',
                         width: 50,

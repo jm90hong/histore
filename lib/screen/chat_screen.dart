@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:histore/app_http/user_http.dart';
 import 'package:histore/model/game_result_model.dart';
+import 'package:histore/model/user_model.dart';
 import 'package:histore/screen/game/game2_screen.dart';
 import 'package:histore/screen/game_index_screen.dart';
 import 'package:histore/widget/app_widget.dart';
@@ -227,13 +229,13 @@ class _ChatScreenState extends State<ChatScreen> {
                               imagePath: 'assets/icon/btn_right.png',
                               width: 33,
                               onTap: (){
-                                print(currentChatIndex.toString()+'  '+chatList.length.toString());
+                               
                                 if(currentChatIndex==chatList.length){
                                   //todo 모든 미션 성공
                                   showToast('축하합니다. 에피소드1을 모두 완료하였습니다!');
 
                                   //todo 성공 로직 처리 백엔드
-
+                                  Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage1');
 
 
                                   Navigator.pop(context,'ok');

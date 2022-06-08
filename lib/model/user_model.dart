@@ -25,13 +25,13 @@ class UserModel extends ChangeNotifier{
       );
 
     if(stage=='stage1'){
-      me.epi1=='y';
+      me.epi1='y';
     }else if(stage=='stage2'){
-      me.epi2=='y';
+      me.epi2='y';
     }else if(stage=='stage3'){
-      me.epi3=='y';
+      me.epi3='y';
     }else if(stage=='stage4'){
-      me.epi4=='y';
+      me.epi4='y';
     }
     notifyListeners();
 
