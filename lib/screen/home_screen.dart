@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:histore/model/user_model.dart';
 import 'package:histore/screen/chat_screen.dart';
 import 'package:histore/screen/game_index_screen.dart';
+import 'package:histore/screen/my_screen.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: 50,
                         onTap: (){
                           //프로필 보기
-
+                          Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: MyScreen()));
                         }
                     ),
                   ],
@@ -108,8 +109,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 onStartTap: () async{
                   var result = await Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: ChatScreen()));
 
-                  //todo 에피소드 1에 입장
+                  //todo 에피소드 2 성공 처리 하기
                   if(result=='ok'){
+                    Provider.of<UserModel>(context,listen: false).clearStage(
+                        stage: 'stage2'
+                    );
 
                   }else{
 

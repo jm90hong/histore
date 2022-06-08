@@ -17,6 +17,27 @@ class UserModel extends ChangeNotifier{
   }
 
 
+  Future<dynamic> clearStage({required String stage}) async{
+    var result = await UserHttp.clearStage(
+          userIdx: me.userIdx,
+          stage: stage
+      );
+
+    if(stage=='stage1'){
+      me.epi1=='y';
+    }else if(stage=='stage2'){
+      me.epi2=='y';
+    }else if(stage=='stage3'){
+      me.epi3=='y';
+    }else if(stage=='stage4'){
+      me.epi4=='y';
+    }
+    notifyListeners();
+
+
+    return result;
+  }
+
 
   void resetMe(){
     notifyListeners();

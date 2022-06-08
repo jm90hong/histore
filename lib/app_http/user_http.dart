@@ -6,6 +6,27 @@ import 'package:histore/config/app_config.dart';
 
 class UserHttp{
 
+
+
+  //todo stage 클린
+  static Future<dynamic> clearStage({
+    required int userIdx,
+    required String stage
+  }) async{
+
+    var requestUrl = apiAddress+'/user/clearStage';
+    Uri uri = Uri.parse(requestUrl);
+    var urlParam = uri.replace(queryParameters: {
+      'user_idx':userIdx.toString(),
+      'stage':stage.toString()
+    });
+    var response = await http.get(urlParam);
+
+    return response.body;
+  }
+
+
+
   //todo 회원 가입
   static Future<dynamic> add({
     required User user
