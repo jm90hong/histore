@@ -137,6 +137,10 @@ class _ChatScreenState extends State<ChatScreen> {
         'sayer':'game',
         'value':'game5'
       },
+      {
+        'sayer':b,
+        'value':'드디어 모든 임무가 완료 되었네 수고했단다..'
+      },
 
     ];
     msg=chatList[currentChatIndex]['value'];
@@ -223,6 +227,18 @@ class _ChatScreenState extends State<ChatScreen> {
                               imagePath: 'assets/icon/btn_right.png',
                               width: 33,
                               onTap: (){
+                                print(currentChatIndex.toString()+'  '+chatList.length.toString());
+                                if(currentChatIndex==chatList.length){
+                                  //todo 모든 미션 성공
+                                  showToast('축하합니다. 에피소드1을 모두 완료하였습니다!');
+
+                                  //todo 성공 로직 처리 백엔드
+
+
+
+                                  Navigator.pop(context,'ok');
+                                  return;
+                                }
                                 setState(() {
                                   currentChatIndex++;
                                   if(chatList[currentChatIndex]['sayer'] == 'game'){
@@ -372,6 +388,8 @@ class _ChatScreenState extends State<ChatScreen> {
                                     whoSay=chatList[currentChatIndex]['sayer'];
                                     msg = chatList[currentChatIndex]['value'];
                                   }
+
+
 
 
 

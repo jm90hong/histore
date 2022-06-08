@@ -105,8 +105,16 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.push(context, PageTransition(type: PageTransitionType.fade,
               child: EpisodeIndexScreen(
                 episodeIndex: episodeIndex,
-                onStartTap: (){
-                  Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: ChatScreen()));
+                onStartTap: () async{
+                  var result = await Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: ChatScreen()));
+
+                  //todo 에피소드 1에 입장
+                  if(result=='ok'){
+
+                  }else{
+
+                  }
+
                 },
               )));
         }else{
