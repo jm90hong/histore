@@ -12,6 +12,7 @@ class UserModel extends ChangeNotifier{
   Future<User> login({required User user}) async{
     User result = await UserHttp.getUserByIdAndPw(user: user);
     me=result;
+    print(me.epi1+me.epi2+me.epi3+me.epi4);
     notifyListeners();
     return result;
   }
