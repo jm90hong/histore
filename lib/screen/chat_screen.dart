@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:histore/app_http/user_http.dart';
 import 'package:histore/model/game_result_model.dart';
+import 'package:histore/model/user_model.dart';
 import 'package:histore/screen/game/game2_screen.dart';
 import 'package:histore/screen/game_index_screen.dart';
 import 'package:histore/widget/app_widget.dart';
@@ -7,6 +9,9 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import 'game/game1_screen.dart';
+import 'game/game3_screen.dart';
+import 'game/game4_screen.dart';
+import 'game/game5_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -26,7 +31,11 @@ class _ChatScreenState extends State<ChatScreen> {
 
   List<Map> chatList = [];
 
-
+  int _game1Index=4;
+  int _game2Index=10;
+  int _game3Index=16;
+  int _game4Index=20;
+  int _game5Index=23;
 
   @override
   void initState() {
@@ -35,29 +44,109 @@ class _ChatScreenState extends State<ChatScreen> {
     chatList = [
       {
         'sayer':a,
-        'value':'대화1'
+        'value':'대화1-1'
       },
       {
         'sayer':b,
-        'value':'대화2'
+        'value':'대화1-2'
       },
       {
         'sayer':a,
-        'value':'대화3'
+        'value':'대화1-3'
       },
       {
         'sayer':b,
-        'value':'대화4'
+        'value':'대화1-4'
       },
       {
         'sayer':'game',
         'value':'game1'
       },
+      {
+        'sayer':b,
+        'value':'대단하군.. 게임1을 성공했구나!'
+      },
+
+      {
+        'sayer':a,
+        'value':'대화2-1'
+      },
+      {
+        'sayer':b,
+        'value':'대화2-2'
+      },
+      {
+        'sayer':a,
+        'value':'대화2-3'
+      },
+      {
+        'sayer':b,
+        'value':'대화2-4'
+      },
+      {
+        'sayer':'game',
+        'value':'game2'
+      },
+      {
+        'sayer':b,
+        'value':'오 대단하군.. 게임2을 성공했구나!'
+      },
+      {
+        'sayer':a,
+        'value':'대화3-1'
+      },
+      {
+        'sayer':a,
+        'value':'대화3-2'
+      },
+      {
+        'sayer':a,
+        'value':'대화3-3'
+      },
+      {
+        'sayer':a,
+        'value':'대화3-4'
+      },
+      {
+        'sayer':'game',
+        'value':'game3'
+      },
+      {
+        'sayer':b,
+        'value':'정말 대단하군.. 게임3을 성공했구나!'
+      },
+      {
+        'sayer':b,
+        'value':'바로 게임4를 시작하지..'
+      },
+      {
+        'sayer':a,
+        'value':'좋아요!'
+      },
+      {
+        'sayer':'game',
+        'value':'game4'
+      },
+      {
+        'sayer':b,
+        'value':'정말 대단하군.. 게임4을 성공했구나!'
+      },
+      {
+        'sayer':b,
+        'value':'자 그럼 마지막으로 최종 추리를 해보지..'
+      },
+      {
+        'sayer':'game',
+        'value':'game5'
+      },
+      {
+        'sayer':b,
+        'value':'드디어 모든 임무가 완료 되었네 수고했단다..'
+      },
+
     ];
     msg=chatList[currentChatIndex]['value'];
 
-
-    print(chatList);
   }
 
 
@@ -136,15 +225,22 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: Consumer<GameResultModel>(
                         builder: (context, resultModel, child){
 
-                          if(!resultModel.game1Result&&currentChatIndex==5){
-                            currentChatIndex=3;
-                          }
-
-
                           return SimpleButton(
                               imagePath: 'assets/icon/btn_right.png',
                               width: 33,
                               onTap: (){
+                               
+                                if(currentChatIndex==chatList.length){
+                                  //todo 모든 미션 성공
+                                  showToast('축하합니다. 에피소드1을 모두 완료하였습니다!');
+
+                                  //todo 성공 로직 처리 백엔드
+                                  Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage1');
+
+
+                                  Navigator.pop(context,'ok');
+                                  return;
+                                }
                                 setState(() {
                                   currentChatIndex++;
                                   if(chatList[currentChatIndex]['sayer'] == 'game'){
@@ -157,10 +253,25 @@ class _ChatScreenState extends State<ChatScreen> {
                                             type: PageTransitionType.fade,
                                             child: GameIndexScreen(
                                               episodeIndex: 1,
-                                              onStartTap: (){
-                                                Navigator.pushReplacement(context, PageTransition(
+                                              onStartTap: () async{
+                                                var result= await Navigator.pushReplacement(context, PageTransition(
                                                     type: PageTransitionType.fade,
-                                                    child: Game1Screen()));
+                                                    child: Game1Screen()
+                                                ));
+                                                if(result=='ok'){
+                                                  setState(() {
+                                                    currentChatIndex=_game1Index+1;
+                                                    whoSay=chatList[currentChatIndex]['sayer'];
+                                                    msg = chatList[currentChatIndex]['value'];
+                                                  });
+                                                }else{
+                                                  setState(() {
+                                                    currentChatIndex=_game1Index-1;
+                                                    whoSay=chatList[currentChatIndex]['sayer'];
+                                                    msg = chatList[currentChatIndex]['value'];
+                                                  });
+                                                }
+
                                               },
                                             )));
                                         break;
@@ -169,31 +280,118 @@ class _ChatScreenState extends State<ChatScreen> {
                                         Navigator.push(context, PageTransition(
                                             type: PageTransitionType.fade,
                                             child: GameIndexScreen(
-                                              episodeIndex: 1,
-                                              onStartTap: (){
-                                                Navigator.pushReplacement(context, PageTransition(
+                                              episodeIndex: 2,
+                                              onStartTap: () async{
+                                               var result =  await Navigator.pushReplacement(context, PageTransition(
                                                     type: PageTransitionType.fade,
                                                     child: Game2Screen()));
+
+                                               if(result=='ok'){
+                                                 setState(() {
+                                                   currentChatIndex=_game2Index+1;
+                                                   whoSay=chatList[currentChatIndex]['sayer'];
+                                                   msg = chatList[currentChatIndex]['value'];
+                                                 });
+                                               }else{
+                                                 setState(() {
+                                                   currentChatIndex=_game2Index-1;
+                                                   whoSay=chatList[currentChatIndex]['sayer'];
+                                                   msg = chatList[currentChatIndex]['value'];
+                                                 });
+                                               }
+
                                               },
                                             )));
                                         break;
 
                                       case 'game3':
+
+                                        Navigator.push(context, PageTransition(
+                                            type: PageTransitionType.fade,
+                                            child: GameIndexScreen(
+                                              episodeIndex: 3,
+                                              onStartTap: () async{
+                                                var result =  await Navigator.pushReplacement(context, PageTransition(
+                                                    type: PageTransitionType.fade,
+                                                    child: Game3Screen()));
+
+                                                if(result=='ok'){
+                                                  setState(() {
+                                                    currentChatIndex=_game3Index+1;
+                                                    whoSay=chatList[currentChatIndex]['sayer'];
+                                                    msg = chatList[currentChatIndex]['value'];
+                                                  });
+                                                }else{
+                                                  setState(() {
+                                                    currentChatIndex=_game3Index-1;
+                                                    whoSay=chatList[currentChatIndex]['sayer'];
+                                                    msg = chatList[currentChatIndex]['value'];
+                                                  });
+                                                }
+
+                                              },
+                                            )));
                                         break;
 
                                       case 'game4':
+                                        Navigator.push(context, PageTransition(
+                                            type: PageTransitionType.fade,
+                                            child: GameIndexScreen(
+                                              episodeIndex: 4,
+                                              onStartTap: () async{
+                                                var result =  await Navigator.pushReplacement(context, PageTransition(
+                                                    type: PageTransitionType.fade,
+                                                    child: Game4Screen()));
+
+                                                if(result=='ok'){
+                                                  setState(() {
+                                                    currentChatIndex=_game4Index+1;
+                                                    whoSay=chatList[currentChatIndex]['sayer'];
+                                                    msg = chatList[currentChatIndex]['value'];
+                                                  });
+                                                }else if(result=='fail'){
+                                                  currentChatIndex=_game4Index-1;
+                                                  whoSay=chatList[currentChatIndex]['sayer'];
+                                                  msg = chatList[currentChatIndex]['value'];
+                                                }
+
+                                              },
+                                            )));
+                                        break;
+
+                                      case 'game5':
+                                        Navigator.push(context, PageTransition(
+                                            type: PageTransitionType.fade,
+                                            child: GameIndexScreen(
+                                              episodeIndex: 5,
+                                              onStartTap: () async{
+                                                var result =  await Navigator.pushReplacement(context, PageTransition(
+                                                    type: PageTransitionType.fade,
+                                                    child: Game5Screen()));
+
+                                                if(result=='ok'){
+                                                  setState(() {
+                                                    currentChatIndex=_game5Index+1;
+                                                    whoSay=chatList[currentChatIndex]['sayer'];
+                                                    msg = chatList[currentChatIndex]['value'];
+                                                  });
+                                                }else if(result=='fail'){
+                                                  currentChatIndex=_game5Index-1;
+                                                  whoSay=chatList[currentChatIndex]['sayer'];
+                                                  msg = chatList[currentChatIndex]['value'];
+                                                }
+
+                                              },
+                                            )));
                                         break;
 
                                     }
-
-
-
-
-                                    currentChatIndex++;
                                   }else{
                                     whoSay=chatList[currentChatIndex]['sayer'];
                                     msg = chatList[currentChatIndex]['value'];
                                   }
+
+
 
 
 

@@ -34,6 +34,5 @@ class User {
       epi3: json['epi3'],
       epi4: json['epi4'],
     );
-
   }
 }
