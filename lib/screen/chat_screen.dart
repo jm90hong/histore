@@ -37,6 +37,12 @@ class _ChatScreenState extends State<ChatScreen> {
   int _game4Index=20;
   int _game5Index=23;
 
+  List<String> imagePathList=[
+    'smile.png',
+    'angry.png',
+  ];
+
+
   @override
   void initState() {
     // TODO: implement initState
@@ -191,7 +197,6 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
 
 
-
                     Positioned(
                       top: 5,
                       left: whoSay=='대한' ? 30 : null,
@@ -244,9 +249,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                 setState(() {
                                   currentChatIndex++;
                                   if(chatList[currentChatIndex]['sayer'] == 'game'){
-
                                     var gameType = chatList[currentChatIndex]['value'];
-
                                     switch (gameType){
                                       case 'game1':
                                         Navigator.push(context, PageTransition(
