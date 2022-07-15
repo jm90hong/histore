@@ -6,20 +6,20 @@ import 'package:histore/screen/game_index_screen.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-import 'episode/1/episode_1_chatlist.dart';
-import 'game/game1_screen.dart';
-import 'game/game3_screen.dart';
-import 'game/game4_screen.dart';
-import 'game/game5_screen.dart';
 
-class ChatScreen extends StatefulWidget {
+import '../../game/game1_screen.dart';
+import '../../game/game3_screen.dart';
+import '../../game/game4_screen.dart';
+import '../../game/game5_screen.dart';
+
+class Episode1ChatScreen extends StatefulWidget {
 
 
   @override
-  _ChatScreenState createState() => _ChatScreenState();
+  _Episode1ChatScreenState createState() => _Episode1ChatScreenState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
 
   String a = "대한";
   String b = "장수왕";
@@ -206,9 +206,9 @@ class _ChatScreenState extends State<ChatScreen> {
                         width: 80,
                         height: 40,
                         decoration:const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/image/duru.png')
-                          )
+                            image: DecorationImage(
+                                image: AssetImage('assets/image/duru.png')
+                            )
                         ),
                         child: Center(
                           child: Text(
@@ -232,14 +232,12 @@ class _ChatScreenState extends State<ChatScreen> {
                               imagePath: 'assets/icon/btn_right.png',
                               width: 33,
                               onTap: (){
-                               
+
                                 if(currentChatIndex==chatList.length){
                                   //todo 모든 미션 성공
                                   showToast('축하합니다. 에피소드1을 모두 완료하였습니다!');
-
                                   //todo 성공 로직 처리 백엔드
                                   Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage1');
-
                                   Navigator.pop(context,'ok');
                                   return;
                                 }
@@ -255,10 +253,13 @@ class _ChatScreenState extends State<ChatScreen> {
                                             child: GameIndexScreen(
                                               episodeIndex: 1,
                                               onStartTap: () async{
-                                                var result= await Navigator.pushReplacement(context, PageTransition(
-                                                    type: PageTransitionType.fade,
-                                                    child: Game1Screen()
-                                                ));
+                                                var result= await Navigator.pushReplacement(
+                                                    context,
+                                                    PageTransition(
+                                                      type: PageTransitionType.fade,
+                                                      child: Game1Screen()
+                                                    )
+                                                );
                                                 if(result=='ok'){
                                                   setState(() {
                                                     currentChatIndex=_game1Index+1;
@@ -283,23 +284,24 @@ class _ChatScreenState extends State<ChatScreen> {
                                             child: GameIndexScreen(
                                               episodeIndex: 2,
                                               onStartTap: () async{
-                                               var result =  await Navigator.pushReplacement(context, PageTransition(
+                                                var result =  await Navigator.pushReplacement(context, PageTransition(
                                                     type: PageTransitionType.fade,
                                                     child: Game2Screen()));
 
-                                               if(result=='ok'){
-                                                 setState(() {
-                                                   currentChatIndex=_game2Index+1;
-                                                   whoSay=chatList[currentChatIndex]['sayer'];
-                                                   msg = chatList[currentChatIndex]['value'];
-                                                 });
-                                               }else{
-                                                 setState(() {
-                                                   currentChatIndex=_game2Index-1;
-                                                   whoSay=chatList[currentChatIndex]['sayer'];
-                                                   msg = chatList[currentChatIndex]['value'];
-                                                 });
-                                               }
+                                                if(result=='ok'){
+                                                  setState(() {
+                                                    currentChatIndex=_game2Index+1;
+                                                    whoSay=chatList[currentChatIndex]['sayer'];
+                                                    msg = chatList[currentChatIndex]['value'];
+                                                  });
+                                                }else{
+                                                    setState(() {
+                                                      currentChatIndex=_game2Index-1;
+                                                      whoSay=chatList[currentChatIndex]['sayer'];
+                                                      msg = chatList[currentChatIndex]['value'];
+                                                    }
+                                                  );
+                                                }
 
                                               },
                                             )));

@@ -41,9 +41,6 @@ class _Game1ScreenState extends State<Game1Screen> {
   @override
   Widget build(BuildContext context) {
 
-    var sw = MediaQuery.of(context).size.width;
-    var sh = MediaQuery.of(context).size.height;
-
     return WillPopScope(
       onWillPop: () async{
         if(found1 && found2 && found3 && found4){
