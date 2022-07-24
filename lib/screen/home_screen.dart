@@ -122,6 +122,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Episode1EpilogueScreen()
                 )
             );
+
+            if(result=='ok'){
+              print('에피1 성공');
+              //todo 에피소드 1 시작하기
+            }
           }else if(episodeIndex==2){
 
           }else if(episodeIndex==3){
