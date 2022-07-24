@@ -6,7 +6,6 @@ import 'package:histore/screen/game_index_screen.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-import 'episode/1/episode_1_chatlist.dart';
 import 'game/game1_screen.dart';
 import 'game/game3_screen.dart';
 import 'game/game4_screen.dart';
