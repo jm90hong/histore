@@ -4,7 +4,7 @@ import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
-import 'episode_1_epilogue_screen.dart';
+import 'epi1_game1_screen.dart';
 
 
 class Episode1ChatScreen extends StatefulWidget {
@@ -18,13 +18,17 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
 
   String a = "대한";
   String b = "장수왕";
-  String whoSay = '대한';
+  String? whoSay = '대한';
+  String? msg='';
+  String? aImg='';
+  String? bImg='';
   int currentChatIndex=0;
-  String msg='';
-
-
-
   List<Map> chatList = [];
+  bool epi1Game1Success=false;
+  bool epi1Game2Success=false;
+  bool epi1Game3Success=false;
+  bool epi1Game4Success=false;
+
 
 
   void goToChatBeforeTheGame({required String gameName}){
@@ -34,36 +38,61 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
     });
   }
 
+  void goNextChat() async{
+    setState(()  {
+      currentChatIndex++;
+      whoSay=chatList[currentChatIndex]['sayer'];
+      msg=chatList[currentChatIndex]['value'];
+      aImg = chatList[currentChatIndex]['a_img'];
+      bImg = chatList[currentChatIndex]['b_img'];
+    });
+    if(whoSay=='game'){
+      //todo game screen으로 이동
+      switch(msg){
+        case 'game1':
+          var result = await Navigator.push(
+              context,
+              PageTransition(
+                  type: PageTransitionType.fade,
+                  child: Epi1Game1Screen()
+              )
+          );
+          epi1Game1Success=result;
+
+      }
+    }
+
+  }
 
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
-
-
     chatList=[
       {
-        'sayer':a,
+        'sayer':'대한',
         'value':'대화1-1',
         'a_img':'assets/image/episode1/d_angrycry.png',
         'b_img':'assets/image/episode1/b.png',
       },
       {
-        'sayer':b,
+        'sayer':'장수왕',
         'value':'대화1-2',
         'a_img':'assets/image/episode1/d_angrycry.png',
         'b_img':'assets/image/episode1/b.png',
       },
-
-
-
+      {
+        'sayer':'game',
+        'value':'game1',
+      },
     ];
+
     msg=chatList[currentChatIndex]['value'];
-
+    whoSay=chatList[currentChatIndex]['sayer'];
+    aImg = chatList[currentChatIndex]['a_img'];
+    bImg = chatList[currentChatIndex]['b_img'];
   }
-
 
 
 
@@ -76,17 +105,17 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
           alignment: Alignment.center,
           children: [ //todo 캐릭터
 
-            Positioned(
+            whoSay != 'game' ? Positioned(
                 bottom: -50,
                 left: 120,
-                child: Image.asset('assets/image/a.png',width: 170,fit: BoxFit.cover,)
-            ),
+                child: Image.asset('$aImg',width: 170,fit: BoxFit.cover,)
+            ) : const SizedBox(width: 0,height: 0,),
 
-            Positioned(
+            whoSay != 'game' ? Positioned(
                 bottom: -50,
                 right: 120,
-                child: Image.asset('assets/image/b.png',width: 170,fit: BoxFit.cover,)
-            ),
+                child: Image.asset('$bImg',width: 170,fit: BoxFit.cover,)
+            ) : const SizedBox(width: 0,height: 0,),
 
             Positioned(
               bottom: 30,
@@ -105,7 +134,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
                       width: 500,
                       height: 80,
                       child: Center(
-                        child: Text(msg),
+                        child: Text(msg!),
                       ),
                     ),
 
@@ -123,7 +152,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
                         ),
                         child: Center(
                           child: Text(
-                            whoSay,
+                            whoSay!,
                             style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -143,7 +172,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
                               imagePath: 'assets/icon/btn_right.png',
                               width: 33,
                               onTap: (){
-
+                                goNextChat();
                               }
                           );
                         },
