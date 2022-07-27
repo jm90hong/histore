@@ -6,6 +6,9 @@ import 'package:provider/provider.dart';
 
 import 'epi1_game1_screen.dart';
 import 'epi1_game2_screen.dart';
+import 'epi1_game3_screen.dart';
+import 'epi1_game4_screen.dart';
+import 'epi1_game5_screen.dart';
 
 
 class Episode1ChatScreen extends StatefulWidget {
@@ -30,7 +33,8 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
   bool epi1Game2Success=false;
   bool epi1Game3Success=false;
   bool epi1Game4Success=false;
-
+  bool epi1Game5Success=false;
+  bool epi1Game6Success=false;
 
   void _setUiByChatIndex(){
     setState(() { // setState() 추가.
@@ -45,7 +49,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
 
   void _judgement({required String gameName, required bool isSuccess}){
 
-    if(epi1Game1Success && epi1Game2Success){
+    if(epi1Game1Success && epi1Game2Success && epi1Game3Success && epi1Game4Success && epi1Game5Success && epi1Game6Success){
       showToast('에피소드 1 성공');
       Navigator.pop(context,true);
       return;
@@ -66,7 +70,6 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
 
   void _goToChatAfterTheGame({required String gameName}){
     var index = chatList.indexWhere((element) => element['value']==gameName);
-    print('[1] '+index.toString());
     currentChatIndex=index+1;
     _setUiByChatIndex();
   }
@@ -100,6 +103,39 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
             );
             epi1Game2Success=result;
             _judgement(gameName: 'game2',isSuccess: epi1Game2Success);
+            break;
+          case 'game3':
+            var result = await Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: Epi1Game3Screen()
+                )
+            );
+            epi1Game3Success=result;
+            _judgement(gameName: 'game3',isSuccess: epi1Game3Success);
+            break;
+          case 'game4':
+            var result = await Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: Epi1Game4Screen()
+                )
+            );
+            epi1Game4Success=result;
+            _judgement(gameName: 'game4',isSuccess: epi1Game4Success);
+            break;
+          case 'game5':
+            var result = await Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: Epi1Game5Screen()
+                )
+            );
+            epi1Game5Success=result;
+            _judgement(gameName: 'game5',isSuccess: epi1Game5Success);
             break;
         }
       }
@@ -149,7 +185,60 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
         'sayer':'game',
         'value':'game2',
       },
-
+      {
+        'sayer':'대한',
+        'value':'대화3-1',
+        'a_img':'assets/image/episode1/d_angrycry.png',
+        'b_img':'assets/image/episode1/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'장수왕',
+        'value':'대화3-2',
+        'a_img':'assets/image/episode1/d_angrycry.png',
+        'b_img':'assets/image/episode1/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'game',
+        'value':'game3',
+      },
+      {
+        'sayer':'대한',
+        'value':'대화4-1',
+        'a_img':'assets/image/episode1/d_angrycry.png',
+        'b_img':'assets/image/episode1/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'장수왕',
+        'value':'대화4-2',
+        'a_img':'assets/image/episode1/d_angrycry.png',
+        'b_img':'assets/image/episode1/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'game',
+        'value':'game4',
+      },
+      {
+        'sayer':'대한',
+        'value':'대화5-1',
+        'a_img':'assets/image/episode1/d_angrycry.png',
+        'b_img':'assets/image/episode1/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'장수왕',
+        'value':'대화5-2',
+        'a_img':'assets/image/episode1/d_angrycry.png',
+        'b_img':'assets/image/episode1/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'game',
+        'value':'game5',
+      },
     ];
 
     _setUiByChatIndex();
