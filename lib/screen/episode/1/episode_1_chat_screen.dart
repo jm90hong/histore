@@ -137,6 +137,9 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
             epi1Game5Success=result;
             _judgement(gameName: 'game5',isSuccess: epi1Game5Success);
             break;
+          case 'game6':
+
+            break;
         }
       }
     }
