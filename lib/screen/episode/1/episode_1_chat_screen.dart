@@ -5,6 +5,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import 'epi1_game1_screen.dart';
+import 'epi1_game2_screen.dart';
 
 
 class Episode1ChatScreen extends StatefulWidget {
@@ -22,6 +23,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
   String? msg='';
   String? aImg='';
   String? bImg='';
+  String backgroundImg='';
   int currentChatIndex=0;
   List<Map> chatList = [];
   bool epi1Game1Success=false;
@@ -36,11 +38,19 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
       msg=chatList[currentChatIndex]['value'];
       aImg = chatList[currentChatIndex]['a_img'];
       bImg = chatList[currentChatIndex]['b_img'];
+      backgroundImg = chatList[currentChatIndex]['background_img'];
     });
   }
 
 
   void _judgement({required String gameName, required bool isSuccess}){
+
+    if(epi1Game1Success && epi1Game2Success){
+      showToast('에피소드 1 성공');
+      Navigator.pop(context,true);
+      return;
+    }
+
     if(isSuccess){
       _goToChatAfterTheGame(gameName: gameName);
     }else{
@@ -80,7 +90,17 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
             epi1Game1Success=result;
             _judgement(gameName: 'game1',isSuccess: epi1Game1Success);
             break;
-
+          case 'game2':
+            var result = await Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: Epi1Game2Screen()
+                )
+            );
+            epi1Game2Success=result;
+            _judgement(gameName: 'game2',isSuccess: epi1Game2Success);
+            break;
         }
       }
     }
@@ -97,33 +117,39 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
         'value':'대화1-1',
         'a_img':'assets/image/episode1/d_angrycry.png',
         'b_img':'assets/image/episode1/b.png',
+        'background_img':'assets/image/episode1/royal_bg.jpg',
       },
       {
         'sayer':'장수왕',
         'value':'대화1-2',
         'a_img':'assets/image/episode1/d_angrycry.png',
         'b_img':'assets/image/episode1/b.png',
+        'background_img':'assets/image/episode1/royal_bg.jpg',
       },
       {
         'sayer':'game',
         'value':'game1',
+
       },
       {
         'sayer':'대한',
         'value':'대화2-1',
         'a_img':'assets/image/episode1/d_angrycry.png',
         'b_img':'assets/image/episode1/b.png',
+        'background_img':'assets/background/bg4.png',
       },
       {
         'sayer':'장수왕',
         'value':'대화2-2',
         'a_img':'assets/image/episode1/d_angrycry.png',
         'b_img':'assets/image/episode1/b.png',
+        'background_img':'assets/background/bg4.png',
       },
       {
         'sayer':'game',
         'value':'game2',
       },
+
     ];
 
     _setUiByChatIndex();
@@ -134,7 +160,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BackgroundContainer(
-        imagePath: 'assets/background/bg4.png',
+        imagePath: backgroundImg,
         child: Stack(
           alignment: Alignment.center,
           children: [ //todo 캐릭터

@@ -125,7 +125,6 @@ class _HomeScreenState extends State<HomeScreen> {
             );
 
             if(result=='ok'){
-              print('에피1 성공');
               //todo 에피소드 1 시작하기
               var result = await Navigator.push(
                   context,
