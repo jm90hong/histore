@@ -130,7 +130,6 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
   }
 
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
