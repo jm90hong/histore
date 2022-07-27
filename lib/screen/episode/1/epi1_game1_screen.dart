@@ -25,8 +25,7 @@ class _Epi1Game1ScreenState extends State<Epi1Game1Screen> {
   bool found4 = false;
 
 
-
-
+  //todo 계속 체크 하여 성공 여부 파단
   void _check() async{
     if(found1 && found2 && found3 && found4){
       Provider.of<GameResultModel>(context,listen: false).makeGameComplete(gameType: 'game1');
@@ -35,14 +34,14 @@ class _Epi1Game1ScreenState extends State<Epi1Game1Screen> {
         context,
         MaterialPageRoute(builder: (context) => Game1SuccessScreen()),
       );
-      Navigator.pop(context,"ok");
+      Navigator.pop(context,true);
     }
   }
 
 
+
   @override
   Widget build(BuildContext context) {
-
     return WillPopScope(
       onWillPop: () async{
         if(found1 && found2 && found3 && found4){

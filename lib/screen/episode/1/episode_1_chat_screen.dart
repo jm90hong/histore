@@ -30,38 +30,60 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
   bool epi1Game4Success=false;
 
 
-
-  void goToChatBeforeTheGame({required String gameName}){
-    var index = chatList.indexWhere((element) => element['value']==gameName);
-    setState((){
-      currentChatIndex=index-1;
-    });
-  }
-
-  void goNextChat() async{
-    setState(()  {
-      currentChatIndex++;
+  void _setUiByChatIndex(){
+    setState(() { // setState() 추가.
       whoSay=chatList[currentChatIndex]['sayer'];
       msg=chatList[currentChatIndex]['value'];
       aImg = chatList[currentChatIndex]['a_img'];
       bImg = chatList[currentChatIndex]['b_img'];
     });
-    if(whoSay=='game'){
-      //todo game screen으로 이동
-      switch(msg){
-        case 'game1':
-          var result = await Navigator.push(
-              context,
-              PageTransition(
-                  type: PageTransitionType.fade,
-                  child: Epi1Game1Screen()
-              )
-          );
-          epi1Game1Success=result;
+  }
 
+
+  void _judgement({required String gameName, required bool isSuccess}){
+    if(isSuccess){
+      _goToChatAfterTheGame(gameName: gameName);
+    }else{
+      _goToChatBeforeTheGame(gameName: gameName);
+    }
+  }
+
+  void _goToChatBeforeTheGame({required String gameName}){
+    var index = chatList.indexWhere((element) => element['value']==gameName);
+    currentChatIndex=index-1;
+    _setUiByChatIndex();
+  }
+
+  void _goToChatAfterTheGame({required String gameName}){
+    var index = chatList.indexWhere((element) => element['value']==gameName);
+    print('[1] '+index.toString());
+    currentChatIndex=index+1;
+    _setUiByChatIndex();
+  }
+
+  void goNextChat() async{
+    currentChatIndex++;
+    if(chatList[currentChatIndex]['sayer'] != 'game'){
+      _setUiByChatIndex();
+    }else{
+      if(chatList[currentChatIndex]['sayer']=='game'){
+        //todo game screen으로 이동
+        switch(chatList[currentChatIndex]['value']){
+          case 'game1':
+            var result = await Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: Epi1Game1Screen()
+                )
+            );
+            epi1Game1Success=result;
+            _judgement(gameName: 'game1',isSuccess: epi1Game1Success);
+            break;
+
+        }
       }
     }
-
   }
 
 
@@ -86,12 +108,25 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
         'sayer':'game',
         'value':'game1',
       },
+      {
+        'sayer':'대한',
+        'value':'대화2-1',
+        'a_img':'assets/image/episode1/d_angrycry.png',
+        'b_img':'assets/image/episode1/b.png',
+      },
+      {
+        'sayer':'장수왕',
+        'value':'대화2-2',
+        'a_img':'assets/image/episode1/d_angrycry.png',
+        'b_img':'assets/image/episode1/b.png',
+      },
+      {
+        'sayer':'game',
+        'value':'game2',
+      },
     ];
 
-    msg=chatList[currentChatIndex]['value'];
-    whoSay=chatList[currentChatIndex]['sayer'];
-    aImg = chatList[currentChatIndex]['a_img'];
-    bImg = chatList[currentChatIndex]['b_img'];
+    _setUiByChatIndex();
   }
 
 
