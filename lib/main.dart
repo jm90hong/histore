@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
     ]);
 
     return MultiProvider(
-
       providers: [
         ChangeNotifierProvider(create: (context)=>UserModel()),
         ChangeNotifierProvider(create: (context)=>GameResultModel()),
