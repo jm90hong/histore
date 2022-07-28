@@ -50,7 +50,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
 
   void _judgement({required String gameName, required bool isSuccess}){
 
-    if(epi1Game1Success && epi1Game2Success && epi1Game3Success && epi1Game4Success && epi1Game5Success && epi1Game6Success){
+    if(epi1Game1Success && epi1Game2Success && epi1Game3Success && epi1Game4Success && epi1Game5Success){
       showToast('에피소드 1 성공');
       Navigator.pop(context,true);
       return;
@@ -251,26 +251,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
         'sayer':'game',
         'value':'game5',
       },
-      {
-        'sayer':'대한',
-        'value':'대화6-1',
-        'a_img':'assets/image/episode1/d_angrycry.png',
-        'b_img':'assets/image/episode1/b.png',
-        'background_img':'assets/background/bg4.png',
-      },
-      {
-        'sayer':'장수왕',
-        'value':'대화6-2',
-        'a_img':'assets/image/episode1/d_angrycry.png',
-        'b_img':'assets/image/episode1/b.png',
-        'background_img':'assets/background/bg4.png',
-      },
-      {
-        'sayer':'game',
-        'value':'game6',
-      },
     ];
-
     _setUiByChatIndex();
   }
 
