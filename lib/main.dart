@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:histore/model/game_result_model.dart';
+import 'package:histore/screen/episode/1/epi1_game6_screen.dart';
 import 'package:histore/screen/index_screen.dart';
 import 'package:histore/screen/add_user_screen.dart';
 import 'package:provider/provider.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: IndexScreen(),
+        //home: Epi1Game6Screen(),
       ),
     );
   }

@@ -9,6 +9,7 @@ import 'epi1_game2_screen.dart';
 import 'epi1_game3_screen.dart';
 import 'epi1_game4_screen.dart';
 import 'epi1_game5_screen.dart';
+import 'epi1_game6_screen.dart';
 
 
 class Episode1ChatScreen extends StatefulWidget {
@@ -138,7 +139,15 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
             _judgement(gameName: 'game5',isSuccess: epi1Game5Success);
             break;
           case 'game6':
-
+            var result = await Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: const Epi1Game6Screen()
+                )
+            );
+            epi1Game6Success=result;
+            _judgement(gameName: 'game6',isSuccess: epi1Game6Success);
             break;
         }
       }
@@ -241,6 +250,24 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
       {
         'sayer':'game',
         'value':'game5',
+      },
+      {
+        'sayer':'대한',
+        'value':'대화6-1',
+        'a_img':'assets/image/episode1/d_angrycry.png',
+        'b_img':'assets/image/episode1/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'장수왕',
+        'value':'대화6-2',
+        'a_img':'assets/image/episode1/d_angrycry.png',
+        'b_img':'assets/image/episode1/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'game',
+        'value':'game6',
       },
     ];
 
