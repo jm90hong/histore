@@ -52,7 +52,9 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
 
     if(epi1Game1Success && epi1Game2Success && epi1Game3Success && epi1Game4Success && epi1Game5Success){
       showToast('에피소드 1 성공');
-      Navigator.pop(context,true);
+      //Navigator.pop(context,true);
+      _goToChatAfterTheGame(gameName: gameName);
+
       return;
     }
 
@@ -138,16 +140,8 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
             epi1Game5Success=result;
             _judgement(gameName: 'game5',isSuccess: epi1Game5Success);
             break;
-          case 'game6':
-            var result = await Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade,
-                    child: const Epi1Game6Screen()
-                )
-            );
-            epi1Game6Success=result;
-            _judgement(gameName: 'game6',isSuccess: epi1Game6Success);
+          case 'end':
+            Navigator.pop(context,true);
             break;
         }
       }
@@ -250,6 +244,17 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
       {
         'sayer':'game',
         'value':'game5',
+      },
+      {
+        'sayer':'장수왕',
+        'value':'모든 게임을 성공하였군 에피소드1을 종료',
+        'a_img':'assets/image/episode1/d_angrycry.png',
+        'b_img':'assets/image/episode1/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'game',
+        'value':'end',
       },
     ];
     _setUiByChatIndex();
