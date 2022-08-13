@@ -54,7 +54,6 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
       showToast('에피소드 1 성공');
       //Navigator.pop(context,true);
       _goToChatAfterTheGame(gameName: gameName);
-
       return;
     }
 
