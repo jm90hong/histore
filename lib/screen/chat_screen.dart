@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:histore/app_http/user_http.dart';
 import 'package:histore/model/game_result_model.dart';
 import 'package:histore/model/user_model.dart';
 import 'package:histore/screen/game/game2_screen.dart';
@@ -7,13 +6,14 @@ import 'package:histore/screen/game_index_screen.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-
 import 'game/game1_screen.dart';
 import 'game/game3_screen.dart';
 import 'game/game4_screen.dart';
 import 'game/game5_screen.dart';
 
 class ChatScreen extends StatefulWidget {
+
+
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
@@ -37,11 +37,17 @@ class _ChatScreenState extends State<ChatScreen> {
   int _game4Index=20;
   int _game5Index=23;
 
+  List<String> imagePathList=[
+    'smile.png',
+    'angry.png',
+  ];
+
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    chatList = [
+    chatList=[
       {
         'sayer':a,
         'value':'대화1-1'
@@ -143,7 +149,6 @@ class _ChatScreenState extends State<ChatScreen> {
         'sayer':b,
         'value':'드디어 모든 임무가 완료 되었네 수고했단다..'
       },
-
     ];
     msg=chatList[currentChatIndex]['value'];
 
@@ -158,6 +163,7 @@ class _ChatScreenState extends State<ChatScreen> {
         child: Stack(
           alignment: Alignment.center,
           children: [ //todo 캐릭터
+
             Positioned(
                 bottom: -50,
                 left: 120,
@@ -178,6 +184,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 child: Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
+
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -190,8 +197,6 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                     ),
 
-
-
                     Positioned(
                       top: 5,
                       left: whoSay=='대한' ? 30 : null,
@@ -199,7 +204,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: Container(
                         width: 80,
                         height: 40,
-                        decoration: BoxDecoration(
+                        decoration:const BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage('assets/image/duru.png')
                           )
@@ -207,7 +212,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         child: Center(
                           child: Text(
                             whoSay,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.5
@@ -215,9 +220,6 @@ class _ChatScreenState extends State<ChatScreen> {
                         ),
                       ),
                     ),
-
-
-
 
                     Positioned(
                       right: 10,
@@ -237,16 +239,14 @@ class _ChatScreenState extends State<ChatScreen> {
                                   //todo 성공 로직 처리 백엔드
                                   Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage1');
 
-
                                   Navigator.pop(context,'ok');
                                   return;
                                 }
+
                                 setState(() {
                                   currentChatIndex++;
                                   if(chatList[currentChatIndex]['sayer'] == 'game'){
-
                                     var gameType = chatList[currentChatIndex]['value'];
-
                                     switch (gameType){
                                       case 'game1':
                                         Navigator.push(context, PageTransition(
@@ -391,22 +391,14 @@ class _ChatScreenState extends State<ChatScreen> {
                                     msg = chatList[currentChatIndex]['value'];
                                   }
 
-
-
-
-
-
                                 });
                               }
                           );
-
                         },
                       ),
                     )
-
                   ],
                 ),
-
               ),
             )
           ],

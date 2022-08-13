@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:histore/model/user_model.dart';
 import 'package:histore/screen/chat_screen.dart';
+import 'package:histore/screen/episode/1/episode_1_epilogue_screen.dart';
 import 'package:histore/screen/game_index_screen.dart';
 import 'package:histore/screen/load_game_screen.dart';
 import 'package:histore/screen/my_screen.dart';
@@ -9,6 +10,7 @@ import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
+import 'episode/1/episode_1_chat_screen.dart';
 import 'episode_index_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -110,27 +112,62 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
     return GestureDetector(
-      onTap: (){
+      onTap: () async{
         if(isOpen){
           showToast('$gameName 에 입장 합니다.');
-          Navigator.push(context, PageTransition(type: PageTransitionType.fade,
-              child: EpisodeIndexScreen(
-                episodeIndex: episodeIndex,
-                onStartTap: () async{
-                  var result = await Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: ChatScreen()));
+          if(episodeIndex==1){
+            var result = await Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: Episode1EpilogueScreen()
+                )
+            );
 
-                  //todo 에피소드 2 성공 처리 하기
-                  if(result=='ok'){
-                    Provider.of<UserModel>(context,listen: false).clearStage(
-                        stage: 'stage2'
-                    );
+            if(result=='ok'){
+              //todo 에피소드 1 시작하기
+              var result = await Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.fade,
+                      child: Episode1ChatScreen()
+                  )
+              );
+            }
+          }else if(episodeIndex==2){
 
-                  }else{
+          }else if(episodeIndex==3){
 
-                  }
+          }else if(episodeIndex==4){
 
-                },
-              )));
+          }
+
+
+
+
+          // Navigator.push(context, PageTransition(type: PageTransitionType.fade,
+          //     child: EpisodeIndexScreen(
+          //       episodeIndex: episodeIndex,
+          //       onStartTap: () async {
+          //         var result = await Navigator.pushReplacement(
+          //             context,
+          //             PageTransition(
+          //                 type: PageTransitionType.fade,
+          //                 child: ChatScreen()
+          //             )
+          //         );
+          //
+          //         //todo 에피소드 2 성공 처리 하기
+          //         // if(result=='ok'){
+          //         //   Provider.of<UserModel>(context,listen: false).clearStage(
+          //         //       stage: 'stage2'
+          //         //   );
+          //         // }else{
+          //         //
+          //         // }
+          //       },
+          //     ))
+          // );
         }else{
           showToast('이전 단계의 게임을 완료 후 입장해주세요.');
         }
