@@ -147,8 +147,142 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
   }
 
 
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    chatList=[
+      {
+        'sayer':'대한',
+        'value':'대화1-1',
+        'a_img':'assets/image/episode2/d_angrycry.png',
+        'b_img':'assets/image/episode2/b.png',
+        'background_img':'assets/image/episode1/royal_bg.jpg',
+      },
+      {
+        'sayer':'장수왕',
+        'value':'대화1-2',
+        'a_img':'assets/image/episode2/d_angrycry.png',
+        'b_img':'assets/image/episode2/b.png',
+        'background_img':'assets/image/episode1/royal_bg.jpg',
+      },
+      {
+        'sayer':'game',
+        'value':'game1',
+
+      },
+      {
+        'sayer':'대한',
+        'value':'대화2-1',
+        'a_img':'assets/image/episode2/d_angrycry.png',
+        'b_img':'assets/image/episode2/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'장수왕',
+        'value':'대화2-2',
+        'a_img':'assets/image/episode2/d_angrycry.png',
+        'b_img':'assets/image/episode2/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'game',
+        'value':'game2',
+      },
+      {
+        'sayer':'대한',
+        'value':'대화3-1',
+        'a_img':'assets/image/episode2/d_angrycry.png',
+        'b_img':'assets/image/episode2/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'장수왕',
+        'value':'대화3-2',
+        'a_img':'assets/image/episode2/d_angrycry.png',
+        'b_img':'assets/image/episode2/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'game',
+        'value':'game3',
+      },
+      {
+        'sayer':'대한',
+        'value':'대화4-1',
+        'a_img':'assets/image/episode2/d_angrycry.png',
+        'b_img':'assets/image/episode2/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'장수왕',
+        'value':'대화4-2',
+        'a_img':'assets/image/episode2/d_angrycry.png',
+        'b_img':'assets/image/episode2/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'game',
+        'value':'game4',
+      },
+      {
+        'sayer':'대한',
+        'value':'대화5-1',
+        'a_img':'assets/image/episode2/d_angrycry.png',
+        'b_img':'assets/image/episode2/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'장수왕',
+        'value':'대화5-2',
+        'a_img':'assets/image/episode2/d_angrycry.png',
+        'b_img':'assets/image/episode2/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'game',
+        'value':'game5',
+      },
+      {
+        'sayer':'장수왕',
+        'value':'모든 게임을 성공하였군 에피소드2를 종료',
+        'a_img':'assets/image/episode2/d_angrycry.png',
+        'b_img':'assets/image/episode2/b.png',
+        'background_img':'assets/background/bg4.png',
+      },
+      {
+        'sayer':'game',
+        'value':'end',
+      },
+    ];
+    _setUiByChatIndex();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: BackgroundContainer(
+        imagePath: backgroundImg,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            whoSay != 'game' ? Positioned(
+                bottom: -50,
+                left: 120,
+                child: Image.asset('$aImg',width: 170,fit: BoxFit.cover,)
+            ) : const SizedBox(width: 0,height: 0,),
+
+            whoSay != 'game' ? Positioned(
+                bottom: -50,
+                right: 120,
+                child: Image.asset('$bImg',width: 170,fit: BoxFit.cover,)
+            ) : const SizedBox(width: 0,height: 0,),
+
+
+          ],
+        )
+      ),
+    );
   }
 }
