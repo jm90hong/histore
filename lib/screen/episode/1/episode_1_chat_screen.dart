@@ -159,14 +159,14 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
         'value':'대화1-1',
         'a_img':'assets/image/episode1/d_angrycry.png',
         'b_img':'assets/image/episode1/b.png',
-        'background_img':'assets/image/episode1/royal_bg.jpg',
+        'background_img':'assets/image/episode1/bg9.jpg',
       },
       {
         'sayer':'장수왕',
         'value':'대화1-2',
         'a_img':'assets/image/episode1/d_angrycry.png',
         'b_img':'assets/image/episode1/b.png',
-        'background_img':'assets/image/episode1/royal_bg.jpg',
+        'background_img':'assets/image/episode1/bg9.jpg',
       },
       {
         'sayer':'game',

@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:histore/screen/episode/game_intro_screen.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
+import '../../../model/game_result_model.dart';
 import '../../../widget/app_widget.dart';
 import '../1/epi1_game1_screen.dart';
 import '../1/epi1_game2_screen.dart';
 import '../1/epi1_game3_screen.dart';
 import '../1/epi1_game4_screen.dart';
 import '../1/epi1_game5_screen.dart';
+import 'epi2_game1_screen.dart';
 
+
+//todo 에피소드2
 class Episode2ChatScreen extends StatefulWidget {
   const Episode2ChatScreen({Key? key}) : super(key: key);
 
@@ -17,6 +23,9 @@ class Episode2ChatScreen extends StatefulWidget {
 
 class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
 
+
+  //대화 중인 인물 이름의 태그 명시
+  bool isLeft=true;
   String a = "대한";
   String b = "장수왕";
   String? whoSay = '대한';
@@ -38,6 +47,7 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
 
   void _setUiByChatIndex(){
     setState(() { // setState() 추가.
+      isLeft=chatList[currentChatIndex]['isLeft'];
       whoSay=chatList[currentChatIndex]['sayer'];
       msg=chatList[currentChatIndex]['value'];
       aImg = chatList[currentChatIndex]['a_img'];
@@ -84,15 +94,33 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
         //todo game screen으로 이동
         switch(chatList[currentChatIndex]['value']){
           case 'game1':
-            var result = await Navigator.push(
+
+            var result1 = await Navigator.push(
                 context,
                 PageTransition(
                     type: PageTransitionType.fade,
-                    child: Epi1Game1Screen()
+                    child: GameIntroScreen(
+                      episodeIndex: 2,
+                      gameIndex: 1,
+                      bgPath: 'assets/image/episode2/bg1.png',
+                    )
                 )
             );
-            game1Success=result;
-            _judgement(gameName: 'game1',isSuccess: game1Success);
+
+
+            if(!result1){
+              var result = await Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.fade,
+                      child: Epi2Game1Screen()
+                  )
+              );
+              game1Success=result;
+              _judgement(gameName: 'game1',isSuccess: game1Success);
+            }
+
+
             break;
           case 'game2':
             var result = await Navigator.push(
@@ -154,18 +182,20 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
     super.initState();
     chatList=[
       {
+        'isLeft':true,
         'sayer':'대한',
         'value':'대화1-1',
-        'a_img':'assets/image/episode2/d_angrycry.png',
-        'b_img':'assets/image/episode2/b.png',
-        'background_img':'assets/image/episode1/royal_bg.jpg',
+        'a_img':'assets/image/episode2/c1.png',
+        'b_img':'assets/image/episode2/c8.png',
+        'background_img':'assets/image/episode1/bg9.jpg',
       },
       {
-        'sayer':'장수왕',
+        'isLeft':false,
+        'sayer':'치치',
         'value':'대화1-2',
-        'a_img':'assets/image/episode2/d_angrycry.png',
-        'b_img':'assets/image/episode2/b.png',
-        'background_img':'assets/image/episode1/royal_bg.jpg',
+        'a_img':'assets/image/episode2/c1.png',
+        'b_img':'assets/image/episode2/c8.png',
+        'background_img':'assets/image/episode1/bg9.jpg',
       },
       {
         'sayer':'game',
@@ -175,15 +205,15 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
       {
         'sayer':'대한',
         'value':'대화2-1',
-        'a_img':'assets/image/episode2/d_angrycry.png',
-        'b_img':'assets/image/episode2/b.png',
+        'a_img':'assets/image/episode2/c1.png',
+        'b_img':'assets/image/episode2/c8.png',
         'background_img':'assets/background/bg4.png',
       },
       {
         'sayer':'장수왕',
         'value':'대화2-2',
-        'a_img':'assets/image/episode2/d_angrycry.png',
-        'b_img':'assets/image/episode2/b.png',
+        'a_img':'assets/image/episode2/c1.png',
+        'b_img':'assets/image/episode2/c8.png',
         'background_img':'assets/background/bg4.png',
       },
       {
@@ -193,15 +223,15 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
       {
         'sayer':'대한',
         'value':'대화3-1',
-        'a_img':'assets/image/episode2/d_angrycry.png',
-        'b_img':'assets/image/episode2/b.png',
+        'a_img':'assets/image/episode2/c1.png',
+        'b_img':'assets/image/episode2/c8.png',
         'background_img':'assets/background/bg4.png',
       },
       {
         'sayer':'장수왕',
         'value':'대화3-2',
-        'a_img':'assets/image/episode2/d_angrycry.png',
-        'b_img':'assets/image/episode2/b.png',
+        'a_img':'assets/image/episode2/c1.png',
+        'b_img':'assets/image/episode2/c8.png',
         'background_img':'assets/background/bg4.png',
       },
       {
@@ -211,15 +241,15 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
       {
         'sayer':'대한',
         'value':'대화4-1',
-        'a_img':'assets/image/episode2/d_angrycry.png',
-        'b_img':'assets/image/episode2/b.png',
+        'a_img':'assets/image/episode2/c1.png',
+        'b_img':'assets/image/episode2/c8.png',
         'background_img':'assets/background/bg4.png',
       },
       {
         'sayer':'장수왕',
         'value':'대화4-2',
-        'a_img':'assets/image/episode2/d_angrycry.png',
-        'b_img':'assets/image/episode2/b.png',
+        'a_img':'assets/image/episode2/c1.png',
+        'b_img':'assets/image/episode2/c8.png',
         'background_img':'assets/background/bg4.png',
       },
       {
@@ -229,15 +259,15 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
       {
         'sayer':'대한',
         'value':'대화5-1',
-        'a_img':'assets/image/episode2/d_angrycry.png',
-        'b_img':'assets/image/episode2/b.png',
+        'a_img':'assets/image/episode2/c1.png',
+        'b_img':'assets/image/episode2/c8.png',
         'background_img':'assets/background/bg4.png',
       },
       {
         'sayer':'장수왕',
         'value':'대화5-2',
-        'a_img':'assets/image/episode2/d_angrycry.png',
-        'b_img':'assets/image/episode2/b.png',
+        'a_img':'assets/image/episode2/c1.png',
+        'b_img':'assets/image/episode2/c8.png',
         'background_img':'assets/background/bg4.png',
       },
       {
@@ -247,8 +277,8 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
       {
         'sayer':'장수왕',
         'value':'모든 게임을 성공하였군 에피소드2를 종료',
-        'a_img':'assets/image/episode2/d_angrycry.png',
-        'b_img':'assets/image/episode2/b.png',
+        'a_img':'assets/image/episode2/c1.png',
+        'b_img':'assets/image/episode2/c8.png',
         'background_img':'assets/background/bg4.png',
       },
       {
@@ -263,25 +293,92 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BackgroundContainer(
-        imagePath: backgroundImg,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            whoSay != 'game' ? Positioned(
-                bottom: -50,
-                left: 120,
-                child: Image.asset('$aImg',width: 170,fit: BoxFit.cover,)
-            ) : const SizedBox(width: 0,height: 0,),
+          imagePath: backgroundImg,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              whoSay != 'game' ? Positioned(
+                  bottom: -50,
+                  left: 120,
+                  child: Image.asset('$aImg',width: 170,fit: BoxFit.cover,)
+              ) : const SizedBox(width: 0,height: 0,),
 
-            whoSay != 'game' ? Positioned(
-                bottom: -50,
-                right: 120,
-                child: Image.asset('$bImg',width: 170,fit: BoxFit.cover,)
-            ) : const SizedBox(width: 0,height: 0,),
+              whoSay != 'game' ? Positioned(
+                  bottom: -50,
+                  right: 120,
+                  child: Image.asset('$bImg',width: 140,fit: BoxFit.cover,)
+              ) : const SizedBox(width: 0,height: 0,),
 
 
-          ],
-        )
+
+              Positioned(
+                bottom: 30,
+                child: Container(
+                  width: 520,
+                  height: 100,
+                  child: Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white.withOpacity(0.5),
+                        ),
+                        width: 500,
+                        height: 80,
+                        child: Center(
+                          child: Text(msg!),
+                        ),
+                      ),
+
+                      Positioned(
+                        top: 5,
+                        left: isLeft ? 30 : null,
+                        right: !isLeft ? 30 : null,
+                        child: Container(
+                          width: 80,
+                          height: 40,
+                          decoration:const BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage('assets/image/duru.png')
+                              )
+                          ),
+                          child: Center(
+                            child: Text(
+                              whoSay!,
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15.5
+                              ),),
+                          ),
+                        ),
+                      ),
+
+                      Positioned(
+                        right: 10,
+                        bottom: 0,
+                        child: Consumer<GameResultModel>(
+                          builder: (context, resultModel, child){
+
+                            return SimpleButton(
+                                imagePath: 'assets/icon/btn_right.png',
+                                width: 33,
+                                onTap: (){
+                                  goNextChat();
+                                }
+                            );
+                          },
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
+
+            ],
+          )
       ),
     );
   }

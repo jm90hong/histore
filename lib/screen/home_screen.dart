@@ -11,6 +11,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import 'episode/1/episode_1_chat_screen.dart';
+import 'episode/2/episode_2_chat_screen.dart';
 import 'episode_index_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -72,17 +73,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           buildGameStageCard(
                               episodeIndex: 2,
-                              gameName: '이성계의 회군',
+                              gameName: '이성계의 위화도회군',
                               isOpen:  userModel.me.epi2 == 'y' ? true : false
                           ),
                           buildGameStageCard(
                               episodeIndex: 3,
-                              gameName: '임진왜란',
+                              gameName: '훈민정음창제',
                               isOpen:  userModel.me.epi3 == 'y' ? true : false
                           ),
                           buildGameStageCard(
                               episodeIndex: 4,
-                              gameName: '을지문덕 대전투',
+                              gameName: '6.25 전쟁',
                               isOpen:  userModel.me.epi4 == 'y' ? true : false
                           ),
                         ],
@@ -135,6 +136,16 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             }
           }else if(episodeIndex==2){
+
+
+            //todo 에피소드 2 시작하기
+            var result = await Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: Episode2ChatScreen()
+                )
+            );
 
           }else if(episodeIndex==3){
 
@@ -191,7 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 alignment: Alignment.center,
                 children: [
                   ClipRRect(
-                    child: Image.asset('assets/background/epi1.png',width: 150,height: 150,fit: BoxFit.cover,),
+                    child: Image.asset('assets/background/epi$episodeIndex.png',width: 150,height: 150,fit: BoxFit.cover,),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   Container(
