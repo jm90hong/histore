@@ -55,21 +55,21 @@ class _Epi3Game2ScreenState extends State<Epi3Game2Screen> {
       },
       child: Scaffold(
         body: BackgroundContainer(
-          imagePath: 'assets/background/game1_bg.png',
+          imagePath: 'assets/image/episode3/bg7.jpg',
           child: Stack(
             alignment: Alignment.center,
             children: [
               //todo 1
               Positioned(
-                top: 135,
-                left: 55,
+                top: 80,
+                left: 153,
                 child: GestureDetector(
                   onTap: (){
                     setState(() {
                       found1=true;
                       _check();
                     });
-                    showToast('문서1 발견!');
+                    showToast('헤레본1 발견!');
                   },
                   child: RedCircleBox(
                     size: 60,
@@ -80,8 +80,8 @@ class _Epi3Game2ScreenState extends State<Epi3Game2Screen> {
 
               //todo 1
               Positioned(
-                top: 190,
-                left: 120,
+                top: 110,
+                left: 320,
                 child: GestureDetector(
                   onTap: (){
                     setState(() {
@@ -89,7 +89,7 @@ class _Epi3Game2ScreenState extends State<Epi3Game2Screen> {
                       _check();
 
                     });
-                    showToast('문서2 발견!');
+                    showToast('헤레본2 발견!');
                   },
                   child: RedCircleBox(
                     size: 60,
@@ -99,15 +99,15 @@ class _Epi3Game2ScreenState extends State<Epi3Game2Screen> {
               ),
 
               Positioned(
-                bottom: 50,
-                left: 330,
+                bottom: 110,
+                left: 530,
                 child: GestureDetector(
                   onTap: (){
                     setState(() {
                       found3=true;
                       _check();
                     });
-                    showToast('문서3 발견!');
+                    showToast('헤레본3 발견!');
                   },
                   child: RedCircleBox(
                     size: 60,
@@ -117,8 +117,8 @@ class _Epi3Game2ScreenState extends State<Epi3Game2Screen> {
               ),
 
               Positioned(
-                bottom: 51,
-                right: 20,
+                top: 79,
+                right: 105,
                 child: GestureDetector(
                   onTap: (){
                     setState(() {
@@ -126,7 +126,7 @@ class _Epi3Game2ScreenState extends State<Epi3Game2Screen> {
                       _check();
 
                     });
-                    showToast('문서4 발견!');
+                    showToast('헤레본4 발견!');
                   },
                   child: RedCircleBox(
                     size: 60,

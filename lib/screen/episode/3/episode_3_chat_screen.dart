@@ -109,28 +109,24 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
                     child: GameIntroScreen(
                       episodeIndex: 3,
                       gameIndex: 1,
-                      bgPath: 'assets/image/episode3/bg5.png',
+                      bgPath: 'assets/image/episode3/bg6.png',
                     )
                 )
             );
 
-            if(!result1){
-              return;
+
+
+            if(result1){
+              var result = await Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.fade,
+                      child: Epi3Game1Screen()
+                  )
+              );
+              game1Success=result;
+              _judgement(gameName: 'game1',isSuccess: game1Success);
             }
-
-
-            var result = await Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade,
-                    child: Epi3Game1Screen()
-                )
-            );
-            game1Success=result;
-            _judgement(gameName: 'game1',isSuccess: game1Success);
-
-
-
 
             break;
           case 'game2':
@@ -147,19 +143,19 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
                 )
             );
 
-            if(!result1){
-              return;
+            if(result1){
+              var result = await Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.fade,
+                      child: Epi3Game2Screen()
+                  )
+              );
+              game2Success=result;
+              _judgement(gameName: 'game2',isSuccess: game2Success);
             }
 
-            var result = await Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade,
-                    child: Epi3Game2Screen()
-                )
-            );
-            game2Success=result;
-            _judgement(gameName: 'game2',isSuccess: game2Success);
+
             break;
           case 'game3':
             var result = await Navigator.push(
@@ -215,7 +211,7 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
         'value':'대화1-1',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/image/episode1/bg9.jpg',
+        'background_img':'assets/image/episode3/bg5.jpg',
       },
       {
         'isLeft':false,
@@ -223,7 +219,7 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
         'value':'대화1-2',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/image/episode1/bg9.jpg',
+        'background_img':'assets/image/episode3/bg5.jpg',
       },
       {
         'sayer':'game',
@@ -236,7 +232,7 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
         'value':'대화2-1',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/background/bg4.png',
+        'background_img':'assets/image/episode3/bg5.jpg',
       },
       {
         'isLeft':false,
@@ -244,7 +240,7 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
         'value':'대화2-2',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/background/bg4.png',
+        'background_img':'assets/image/episode3/bg5.jpg',
       },
       {
         'sayer':'game',
@@ -256,7 +252,7 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
         'value':'대화3-1',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/background/bg4.png',
+        'background_img':'assets/image/episode3/bg5.jpg',
       },
       {
         'isLeft':false,
@@ -264,7 +260,7 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
         'value':'대화3-2',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/background/bg4.png',
+        'background_img':'assets/image/episode3/bg5.jpg',
       },
       {
         'sayer':'game',
@@ -276,7 +272,7 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
         'value':'모든 게임을 성공하였군 에피소드2를 종료',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/background/bg4.png',
+        'background_img':'assets/image/episode3/bg5.jpg',
       },
       {
         'sayer':'game',
@@ -291,7 +287,7 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BackgroundContainer(
-          imagePath: '',
+          imagePath: backgroundImg,
           child: Stack(
             alignment: Alignment.center,
             children: [

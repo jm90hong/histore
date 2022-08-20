@@ -111,20 +111,20 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
                 )
             );
 
-            if(!result1){
-              return;
+            if(result1){
+              var result = await Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.fade,
+                      child: Epi2Game1Screen()
+                  )
+              );
+              game1Success=result;
+              _judgement(gameName: 'game1',isSuccess: game1Success);
+
             }
 
 
-            var result = await Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade,
-                    child: Epi2Game1Screen()
-                )
-            );
-            game1Success=result;
-            _judgement(gameName: 'game1',isSuccess: game1Success);
 
 
 
@@ -145,19 +145,19 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
                 )
             );
 
-            if(!result1){
-              return;
+            if(result1){
+              var result = await Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.fade,
+                      child: Epi2Game2Screen()
+                  )
+              );
+              game2Success=result;
+              _judgement(gameName: 'game2',isSuccess: game2Success);
             }
 
-            var result = await Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade,
-                    child: Epi2Game2Screen()
-                )
-            );
-            game2Success=result;
-            _judgement(gameName: 'game2',isSuccess: game2Success);
+
             break;
           case 'game3':
             var result = await Navigator.push(

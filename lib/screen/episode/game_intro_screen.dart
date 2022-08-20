@@ -70,7 +70,7 @@ class _GameIntroScreenState extends State<GameIntroScreen> {
 
         Navigator.pop(context,result);
 
-        return true;
+        return result;
       },
       child: Scaffold(
         body: BackgroundContainer(
