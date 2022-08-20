@@ -6,10 +6,11 @@ import 'package:provider/provider.dart';
 import '../../../model/game_result_model.dart';
 import '../1/epi1_game4_screen.dart';
 import '../1/epi1_game5_screen.dart';
-import '../2/epi2_game1_screen.dart';
 import '../2/epi2_game2_screen.dart';
 import '../2/epi2_game3_screen.dart';
 import '../game_intro_screen.dart';
+import 'epi3_game1_screen.dart';
+import 'epi3_game2_screen.dart';
 
 
 
@@ -107,9 +108,9 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
                 PageTransition(
                     type: PageTransitionType.fade,
                     child: GameIntroScreen(
-                      episodeIndex: 2,
+                      episodeIndex: 3,
                       gameIndex: 1,
-                      bgPath: 'assets/image/episode2/bg1.png',
+                      bgPath: 'assets/image/episode3/bg5.png',
                     )
                 )
             );
@@ -123,7 +124,7 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
                 context,
                 PageTransition(
                     type: PageTransitionType.fade,
-                    child: Epi2Game1Screen()
+                    child: Epi3Game1Screen()
                 )
             );
             game1Success=result;
@@ -135,13 +136,12 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
             break;
           case 'game2':
 
-
             var result1 = await Navigator.push(
                 context,
                 PageTransition(
                     type: PageTransitionType.fade,
                     child: GameIntroScreen(
-                      episodeIndex: 2,
+                      episodeIndex: 3,
                       gameIndex: 2,
                       bgPath: 'assets/image/episode2/bg1.png',
                     )
@@ -156,7 +156,7 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
                 context,
                 PageTransition(
                     type: PageTransitionType.fade,
-                    child: Epi2Game2Screen()
+                    child: Epi3Game2Screen()
                 )
             );
             game2Success=result;
@@ -292,92 +292,92 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BackgroundContainer(
-        imagePath: '',
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            whoSay != 'game' ? Positioned(
-                bottom: -50,
-                left: 120,
-                child: Image.asset('$aImg',width: 170,fit: BoxFit.cover,)
-            ) : const SizedBox(width: 0,height: 0,),
+          imagePath: '',
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              whoSay != 'game' ? Positioned(
+                  bottom: -50,
+                  left: 120,
+                  child: Image.asset('$aImg',width: 170,fit: BoxFit.cover,)
+              ) : const SizedBox(width: 0,height: 0,),
 
-            whoSay != 'game' ? Positioned(
-                bottom: -50,
-                right: 120,
-                child: Image.asset('$bImg',width: 140,fit: BoxFit.cover,)
-            ) : const SizedBox(width: 0,height: 0,),
+              whoSay != 'game' ? Positioned(
+                  bottom: -50,
+                  right: 120,
+                  child: Image.asset('$bImg',width: 140,fit: BoxFit.cover,)
+              ) : const SizedBox(width: 0,height: 0,),
 
 
 
-            Positioned(
-              bottom: 30,
-              child: Container(
-                width: 520,
-                height: 100,
-                child: Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
+              Positioned(
+                bottom: 30,
+                child: Container(
+                  width: 520,
+                  height: 100,
+                  child: Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
 
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white.withOpacity(0.5),
-                      ),
-                      width: 500,
-                      height: 80,
-                      child: Center(
-                        child: Text(msg!),
-                      ),
-                    ),
-
-                    Positioned(
-                      top: 5,
-                      left: isLeft ? 30 : null,
-                      right: !isLeft ? 30 : null,
-                      child: Container(
-                        width: 80,
-                        height: 40,
-                        decoration:const BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/image/duru.png')
-                            )
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white.withOpacity(0.5),
                         ),
+                        width: 500,
+                        height: 80,
                         child: Center(
-                          child: Text(
-                            whoSay!,
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.5
-                            ),),
+                          child: Text(msg!),
                         ),
                       ),
-                    ),
 
-                    Positioned(
-                      right: 10,
-                      bottom: 0,
-                      child: Consumer<GameResultModel>(
-                        builder: (context, resultModel, child){
-
-                          return SimpleButton(
-                              imagePath: 'assets/icon/btn_right.png',
-                              width: 33,
-                              onTap: (){
-                                goNextChat();
-                              }
-                          );
-                        },
+                      Positioned(
+                        top: 5,
+                        left: isLeft ? 30 : null,
+                        right: !isLeft ? 30 : null,
+                        child: Container(
+                          width: 80,
+                          height: 40,
+                          decoration:const BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage('assets/image/duru.png')
+                              )
+                          ),
+                          child: Center(
+                            child: Text(
+                              whoSay!,
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15.5
+                              ),),
+                          ),
+                        ),
                       ),
-                    )
-                  ],
-                ),
-              ),
-            )
 
-          ],
-        )
+                      Positioned(
+                        right: 10,
+                        bottom: 0,
+                        child: Consumer<GameResultModel>(
+                          builder: (context, resultModel, child){
+
+                            return SimpleButton(
+                                imagePath: 'assets/icon/btn_right.png',
+                                width: 33,
+                                onTap: (){
+                                  goNextChat();
+                                }
+                            );
+                          },
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
+
+            ],
+          )
       ),
     );
   }
