@@ -10,6 +10,7 @@ import '../2/epi2_game2_screen.dart';
 import '../2/epi2_game3_screen.dart';
 import '../game_intro_screen.dart';
 import 'epi3_game1_screen.dart';
+import 'epi3_game212_screen.dart';
 import 'epi3_game2_screen.dart';
 
 
