@@ -27,11 +27,17 @@ class GameIntroScreen extends StatefulWidget {
 class _GameIntroScreenState extends State<GameIntroScreen> {
 
   var result = false;
+  String? title='';
+  String? content='';
 
   var contentMap = {
     '2-1':{
       't':'이성계의 마음 이해하기',
-      'c' : '이성계 장군님이 요즘 ...'
+      'c' :'이성계 장군님이 요즘 ...'
+    },
+    '2-2':{
+      't':'개경까지 가는 가장 빠른길 고르기',
+      'c' :'개경까지 가는 가장 빠른길 고르기 내용'
     }
   };
 
@@ -42,7 +48,9 @@ class _GameIntroScreenState extends State<GameIntroScreen> {
     // TODO: implement initState
     super.initState();
 
-
+    String tag = '${widget.episodeIndex}-${widget.gameIndex}';
+    title=contentMap[tag]!['t'];
+    content=contentMap[tag]!['c'];
 
   }
 
@@ -54,12 +62,13 @@ class _GameIntroScreenState extends State<GameIntroScreen> {
 
         Navigator.pop(context,result);
 
-        return result;
+        return true;
       },
       child: Scaffold(
         body: BackgroundContainer(
           imagePath: widget.bgPath,
           child: Stack(
+            alignment: Alignment.center,
             children: [
               Container(
                 width: 500,
@@ -80,7 +89,7 @@ class _GameIntroScreenState extends State<GameIntroScreen> {
                         ),
                         child: Center(
                           child: Text(
-                            'Episode ',
+                            'Episode ${widget.episodeIndex}',
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 17),
                           ),
                         ),
@@ -89,15 +98,15 @@ class _GameIntroScreenState extends State<GameIntroScreen> {
 
 
                     Container(
-                      padding: EdgeInsets.only(top: 65),
+                      padding: const EdgeInsets.only(top: 65),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text('제목',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
+                          Text('$title',style: const TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
                           const SizedBox(height: 20,),
-                          Text('내용',
+                          Text('$content',
                             textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.black54,fontSize: 14,fontWeight: FontWeight.bold),
+                            style: const TextStyle(color: Colors.black54,fontSize: 14,fontWeight: FontWeight.bold),
                           )
                         ],
                       ),

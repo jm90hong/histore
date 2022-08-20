@@ -1,33 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:histore/screen/episode/game_intro_screen.dart';
+import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:provider/provider.dart';
 
-import '../../../model/game_result_model.dart';
-import '../../../widget/app_widget.dart';
-import '../1/epi1_game3_screen.dart';
 import '../1/epi1_game4_screen.dart';
 import '../1/epi1_game5_screen.dart';
-import 'epi2_game1_screen.dart';
-import 'epi2_game2_screen.dart';
-import 'epi2_game3_screen.dart';
+import '../2/epi2_game1_screen.dart';
+import '../2/epi2_game2_screen.dart';
+import '../2/epi2_game3_screen.dart';
+import '../game_intro_screen.dart';
 
 
-//todo 에피소드2
-class Episode2ChatScreen extends StatefulWidget {
-  const Episode2ChatScreen({Key? key}) : super(key: key);
+
+class Episode4ChatScreen extends StatefulWidget {
+  const Episode4ChatScreen({Key? key}) : super(key: key);
 
   @override
-  State<Episode2ChatScreen> createState() => _Episode2ChatScreenState();
+  State<Episode4ChatScreen> createState() => _Episode4ChatScreenState();
 }
 
-class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
+class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
+
+
+
+
 
 
   //대화 중인 인물 이름의 태그 명시
   bool isLeft=true;
   String a = "대한";
-  String b = "장수왕";
+  String b = "사또";
   String? whoSay = '대한';
   String? msg='';
   String? aImg='';
@@ -217,7 +218,7 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
       },
       {
         'isLeft':false,
-        'sayer':'치치',
+        'sayer':'사또',
         'value':'대화1-2',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
@@ -238,7 +239,7 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
       },
       {
         'isLeft':false,
-        'sayer':'장수왕',
+        'sayer':'사또',
         'value':'대화2-2',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
@@ -284,96 +285,17 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
     _setUiByChatIndex();
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BackgroundContainer(
-          imagePath: backgroundImg,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              whoSay != 'game' ? Positioned(
-                  bottom: -50,
-                  left: 120,
-                  child: Image.asset('$aImg',width: 170,fit: BoxFit.cover,)
-              ) : const SizedBox(width: 0,height: 0,),
+        imagePath: '',
+        child: Stack(
+          children: [
 
-              whoSay != 'game' ? Positioned(
-                  bottom: -50,
-                  right: 120,
-                  child: Image.asset('$bImg',width: 140,fit: BoxFit.cover,)
-              ) : const SizedBox(width: 0,height: 0,),
-
-
-
-              Positioned(
-                bottom: 30,
-                child: Container(
-                  width: 520,
-                  height: 100,
-                  child: Stack(
-                    alignment: Alignment.bottomCenter,
-                    children: [
-
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white.withOpacity(0.5),
-                        ),
-                        width: 500,
-                        height: 80,
-                        child: Center(
-                          child: Text(msg!),
-                        ),
-                      ),
-
-                      Positioned(
-                        top: 5,
-                        left: isLeft ? 30 : null,
-                        right: !isLeft ? 30 : null,
-                        child: Container(
-                          width: 80,
-                          height: 40,
-                          decoration:const BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage('assets/image/duru.png')
-                              )
-                          ),
-                          child: Center(
-                            child: Text(
-                              whoSay!,
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15.5
-                              ),),
-                          ),
-                        ),
-                      ),
-
-                      Positioned(
-                        right: 10,
-                        bottom: 0,
-                        child: Consumer<GameResultModel>(
-                          builder: (context, resultModel, child){
-
-                            return SimpleButton(
-                                imagePath: 'assets/icon/btn_right.png',
-                                width: 33,
-                                onTap: (){
-                                  goNextChat();
-                                }
-                            );
-                          },
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              )
-
-            ],
-          )
+          ],
+        ),
       ),
     );
   }

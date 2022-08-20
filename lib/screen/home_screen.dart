@@ -12,6 +12,8 @@ import 'package:provider/provider.dart';
 
 import 'episode/1/episode_1_chat_screen.dart';
 import 'episode/2/episode_2_chat_screen.dart';
+import 'episode/3/episode_3_chat_screen.dart';
+import 'episode/4/episode_4_chat_screen.dart';
 import 'episode_index_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,83 +25,82 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BackgroundContainer(
-        imagePath: 'assets/background/bg2.png',
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 16,right: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    SimpleButton(
-                        imagePath: 'assets/icon/btn_file.png',
-                        width: 50,
-                        onTap: (){
-                          //프로필 보기
-                          Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: LoadGameScreen()));
-                        }
-                    ),
-                    SizedBox(width: 16,),
-                    SimpleButton(
-                        imagePath: 'assets/icon/btn_profile.png',
-                        width: 50,
-                        onTap: (){
-                          //프로필 보기
-                          Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: MyScreen()));
-                        }
-                    ),
-                  ],
+        body: BackgroundContainer(
+          imagePath: 'assets/background/bg2.png',
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 16,right: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      SimpleButton(
+                          imagePath: 'assets/icon/btn_file.png',
+                          width: 50,
+                          onTap: (){
+                            //프로필 보기
+                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: LoadGameScreen()));
+                          }
+                      ),
+                      SizedBox(width: 16,),
+                      SimpleButton(
+                          imagePath: 'assets/icon/btn_profile.png',
+                          width: 50,
+                          onTap: (){
+                            //프로필 보기
+                            Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: MyScreen()));
+                          }
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Image.asset('assets/icon/epi1.png',width: 140,),
-              SizedBox(height: 10,),
-              Container(
-                width: double.infinity,
+                Image.asset('assets/icon/epi1.png',width: 140,),
+                SizedBox(height: 10,),
+                Container(
+                  width: double.infinity,
 
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Consumer<UserModel>(
-                    builder: (context, userModel, child){
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          buildGameStageCard(
-                              episodeIndex: 1,
-                              gameName: '장수와의 평양천도',
-                              isOpen: userModel.me.epi1 == 'y' ? true : false,
-                          ),
-                          buildGameStageCard(
-                              episodeIndex: 2,
-                              gameName: '이성계의 위화도회군',
-                              isOpen:  userModel.me.epi2 == 'y' ? true : false
-                          ),
-                          buildGameStageCard(
-                              episodeIndex: 3,
-                              gameName: '훈민정음창제',
-                              isOpen:  userModel.me.epi3 == 'y' ? true : false
-                          ),
-                          buildGameStageCard(
-                              episodeIndex: 4,
-                              gameName: '6.25 전쟁',
-                              isOpen:  userModel.me.epi4 == 'y' ? true : false
-                          ),
-                        ],
-                      );
-                    },
-                  )
-                ),
-              )
-              
-            ],
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Consumer<UserModel>(
+                        builder: (context, userModel, child){
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              buildGameStageCard(
+                                episodeIndex: 1,
+                                gameName: '장수와의 평양천도',
+                                isOpen: userModel.me.epi1 == 'y' ? true : false,
+                              ),
+                              buildGameStageCard(
+                                  episodeIndex: 2,
+                                  gameName: '이성계의 위화도회군',
+                                  isOpen:  userModel.me.epi2 == 'y' ? true : false
+                              ),
+                              buildGameStageCard(
+                                  episodeIndex: 3,
+                                  gameName: '훈민정음창제',
+                                  isOpen:  userModel.me.epi3 == 'y' ? true : false
+                              ),
+                              buildGameStageCard(
+                                  episodeIndex: 4,
+                                  gameName: '6.25 전쟁',
+                                  isOpen:  userModel.me.epi4 == 'y' ? true : false
+                              ),
+                            ],
+                          );
+                        },
+                      )
+                  ),
+                )
+
+              ],
+            ),
           ),
-        ),
-      )
+        )
     );
   }
-
 
 
   Widget buildGameStageCard({
@@ -149,8 +150,24 @@ class _HomeScreenState extends State<HomeScreen> {
 
           }else if(episodeIndex==3){
 
-          }else if(episodeIndex==4){
+            //todo 에피소드 3 시작하기
+            var result = await Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: Episode3ChatScreen()
+                )
+            );
 
+          }else if(episodeIndex==4){
+            //todo 에피소드 4 시작하기
+            var result = await Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: Episode4ChatScreen()
+                )
+            );
           }
 
 
