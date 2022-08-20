@@ -6,11 +6,9 @@ import 'package:provider/provider.dart';
 import '../../../model/game_result_model.dart';
 import '../1/epi1_game4_screen.dart';
 import '../1/epi1_game5_screen.dart';
-import '../2/epi2_game2_screen.dart';
 import '../2/epi2_game3_screen.dart';
 import '../game_intro_screen.dart';
 import 'epi3_game1_screen.dart';
-import 'epi3_game212_screen.dart';
 import 'epi3_game2_screen.dart';
 
 
