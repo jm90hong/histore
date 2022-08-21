@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
+import '../../../model/game_result_model.dart';
 import '../1/epi1_game4_screen.dart';
 import '../1/epi1_game5_screen.dart';
 import '../2/epi2_game1_screen.dart';
@@ -105,9 +107,9 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
                 PageTransition(
                     type: PageTransitionType.fade,
                     child: GameIntroScreen(
-                      episodeIndex: 2,
+                      episodeIndex: 4,
                       gameIndex: 1,
-                      bgPath: 'assets/image/episode2/bg1.png',
+                      bgPath: 'assets/image/episode4/bg6.png',
                     )
                 )
             );
@@ -212,17 +214,17 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
         'isLeft':true,
         'sayer':'대한',
         'value':'대화1-1',
-        'a_img':'assets/image/episode2/c1.png',
-        'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/image/episode1/bg9.jpg',
+        'a_img':'assets/image/episode4/c1.png',
+        'b_img':'assets/image/episode4/c8.png',
+        'background_img':'assets/image/episode4/bg5.png',
       },
       {
         'isLeft':false,
         'sayer':'사또',
         'value':'대화1-2',
-        'a_img':'assets/image/episode2/c1.png',
-        'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/image/episode1/bg9.jpg',
+        'a_img':'assets/image/episode4/c1.png',
+        'b_img':'assets/image/episode4/c8.png',
+        'background_img':'assets/image/episode4/bg5.png',
       },
       {
         'sayer':'game',
@@ -233,17 +235,17 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
         'isLeft':true,
         'sayer':'대한',
         'value':'대화2-1',
-        'a_img':'assets/image/episode2/c1.png',
-        'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/background/bg4.png',
+        'a_img':'assets/image/episode4/c1.png',
+        'b_img':'assets/image/episode4/c8.png',
+        'background_img':'assets/image/episode4/bg5.png',
       },
       {
         'isLeft':false,
         'sayer':'사또',
         'value':'대화2-2',
-        'a_img':'assets/image/episode2/c1.png',
-        'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/background/bg4.png',
+        'a_img':'assets/image/episode4/c1.png',
+        'b_img':'assets/image/episode4/c8.png',
+        'background_img':'assets/image/episode4/bg5.png',
       },
       {
         'sayer':'game',
@@ -253,17 +255,17 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
         'isLeft':true,
         'sayer':'대한',
         'value':'대화3-1',
-        'a_img':'assets/image/episode2/c1.png',
-        'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/background/bg4.png',
+        'a_img':'assets/image/episode4/c1.png',
+        'b_img':'assets/image/episode4/c8.png',
+        'background_img':'assets/image/episode4/bg9.jpg',
       },
       {
         'isLeft':false,
         'sayer':'장수왕',
         'value':'대화3-2',
-        'a_img':'assets/image/episode2/c1.png',
-        'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/background/bg4.png',
+        'a_img':'assets/image/episode4/c1.png',
+        'b_img':'assets/image/episode4/c8.png',
+        'background_img':'assets/image/episode4/bg9.jpg',
       },
       {
         'sayer':'game',
@@ -273,9 +275,9 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
         'isLeft':true,
         'sayer':'장수왕',
         'value':'모든 게임을 성공하였군 에피소드4를 종료',
-        'a_img':'assets/image/episode2/c1.png',
-        'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/background/bg4.png',
+        'a_img':'assets/image/episode4/c1.png',
+        'b_img':'assets/image/episode4/c8.png',
+        'background_img':'assets/image/episode4/bg9.jpg',
       },
       {
         'sayer':'game',
@@ -290,12 +292,92 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BackgroundContainer(
-        imagePath: '',
+        imagePath: backgroundImg,
         child: Stack(
+          alignment: Alignment.center,
           children: [
+            whoSay != 'game' ? Positioned(
+                bottom: -50,
+                left: 120,
+                child: Image.asset('$aImg',width: 170,fit: BoxFit.cover,)
+            ) : const SizedBox(width: 0,height: 0,),
+
+            whoSay != 'game' ? Positioned(
+                bottom: -50,
+                right: 120,
+                child: Image.asset('$bImg',width: 140,fit: BoxFit.cover,)
+            ) : const SizedBox(width: 0,height: 0,),
+
+
+
+            Positioned(
+              bottom: 30,
+              child: Container(
+                width: 520,
+                height: 100,
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white.withOpacity(0.5),
+                      ),
+                      width: 500,
+                      height: 80,
+                      child: Center(
+                        child: Text(msg!),
+                      ),
+                    ),
+
+                    Positioned(
+                      top: 5,
+                      left: isLeft ? 30 : null,
+                      right: !isLeft ? 30 : null,
+                      child: Container(
+                        width: 80,
+                        height: 40,
+                        decoration:const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/image/duru.png')
+                            )
+                        ),
+                        child: Center(
+                          child: Text(
+                            whoSay!,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15.5
+                            ),),
+                        ),
+                      ),
+                    ),
+
+                    Positioned(
+                      right: 10,
+                      bottom: 0,
+                      child: Consumer<GameResultModel>(
+                        builder: (context, resultModel, child){
+
+                          return SimpleButton(
+                              imagePath: 'assets/icon/btn_right.png',
+                              width: 33,
+                              onTap: (){
+                                goNextChat();
+                              }
+                          );
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
 
           ],
-        ),
+        )
       ),
     );
   }

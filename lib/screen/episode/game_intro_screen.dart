@@ -46,6 +46,10 @@ class _GameIntroScreenState extends State<GameIntroScreen> {
     '3-2':{
       't':'훈민정음 헤레본 찾기',
       'c' :'훈민정음 헤레본 찾기 내용'
+    },
+    '4-1':{
+      't':'맥 아더 장군 설득시키기',
+      'c' :'맥 아더 장군 설득시키기 내용'
     }
   };
 
