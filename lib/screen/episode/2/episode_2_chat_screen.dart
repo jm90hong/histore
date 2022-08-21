@@ -145,6 +145,7 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
                 )
             );
 
+
             if(result1){
               var result = await Navigator.push(
                   context,

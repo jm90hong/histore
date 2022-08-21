@@ -10,6 +10,7 @@ import '../2/epi2_game3_screen.dart';
 import '../game_intro_screen.dart';
 import 'epi3_game1_screen.dart';
 import 'epi3_game2_screen.dart';
+import 'epi3_game3_screen.dart';
 
 
 
@@ -162,7 +163,7 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
                 context,
                 PageTransition(
                     type: PageTransitionType.fade,
-                    child: Epi2Game3Screen()
+                    child: Epi3Game3Screen()
                 )
             );
             game3Success=result;

@@ -6,6 +6,7 @@ import 'package:histore/widget/app_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../../game/game1_success_screen.dart';
+import 'ep3_game2_success_screen.dart';
 
 
 
@@ -32,7 +33,7 @@ class _Epi3Game2ScreenState extends State<Epi3Game2Screen> {
       showToast('게임 성공!');
       await Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Game1SuccessScreen()),
+        MaterialPageRoute(builder: (context) => Epi3Game2SuccessScreen()),
       );
       Navigator.pop(context,true);
     }
