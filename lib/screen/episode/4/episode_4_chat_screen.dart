@@ -272,7 +272,7 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
       {
         'isLeft':true,
         'sayer':'장수왕',
-        'value':'모든 게임을 성공하였군 에피소드2를 종료',
+        'value':'모든 게임을 성공하였군 에피소드4를 종료',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
         'background_img':'assets/background/bg4.png',

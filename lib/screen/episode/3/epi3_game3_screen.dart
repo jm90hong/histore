@@ -105,7 +105,7 @@ class _Epi3Game3ScreenState extends State<Epi3Game3Screen> {
               child: Container(
                 width: 115,
                 height: 115,
-                color: Colors.transparent.withOpacity(0.5),
+                color: Colors.transparent,
               ),
             ),
           ),
@@ -132,14 +132,13 @@ class _Epi3Game3ScreenState extends State<Epi3Game3Screen> {
               child: Container(
                 width: 115,
                 height: 115,
-                color: Colors.transparent.withOpacity(0.5),
+                color: Colors.transparent,
               ),
             ),
           ),
         ],
       ),
     );
-
   }
 
 

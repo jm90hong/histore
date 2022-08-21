@@ -11,6 +11,7 @@ import '../game_intro_screen.dart';
 import 'epi3_game1_screen.dart';
 import 'epi3_game2_screen.dart';
 import 'epi3_game3_screen.dart';
+import 'epi3_game4_screen.dart';
 
 
 
@@ -63,8 +64,8 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
 
   void _judgement({required String gameName, required bool isSuccess}){
 
-    if(game1Success && game2Success && game3Success){
-      showToast('에피소드 2 성공');
+    if(game1Success && game2Success && game3Success && game4Success){
+      showToast('에피소드 3 성공');
       //Navigator.pop(context,true);
       _goToChatAfterTheGame(gameName: gameName);
       return;
@@ -156,7 +157,6 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
               _judgement(gameName: 'game2',isSuccess: game2Success);
             }
 
-
             break;
           case 'game3':
             var result = await Navigator.push(
@@ -174,22 +174,11 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
                 context,
                 PageTransition(
                     type: PageTransitionType.fade,
-                    child: Epi1Game4Screen()
+                    child: Epi3Game4Screen()
                 )
             );
             game4Success=result;
             _judgement(gameName: 'game4',isSuccess: game4Success);
-            break;
-          case 'game5':
-            var result = await Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade,
-                    child: Epi1Game5Screen()
-                )
-            );
-            game5Success=result;
-            _judgement(gameName: 'game5',isSuccess: game5Success);
             break;
           case 'end':
             Navigator.pop(context,true);
@@ -269,8 +258,28 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
       },
       {
         'isLeft':true,
+        'sayer':'대한',
+        'value':'대화4-1',
+        'a_img':'assets/image/episode2/c1.png',
+        'b_img':'assets/image/episode2/c8.png',
+        'background_img':'assets/image/episode3/bg5.jpg',
+      },
+      {
+        'isLeft':false,
         'sayer':'장수왕',
-        'value':'모든 게임을 성공하였군 에피소드2를 종료',
+        'value':'대화4-2',
+        'a_img':'assets/image/episode2/c1.png',
+        'b_img':'assets/image/episode2/c8.png',
+        'background_img':'assets/image/episode3/bg5.jpg',
+      },
+      {
+        'sayer':'game',
+        'value':'game4',
+      },
+      {
+        'isLeft':true,
+        'sayer':'장수왕',
+        'value':'모든 게임을 성공하였군 에피소드3를 종료',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
         'background_img':'assets/image/episode3/bg5.jpg',

@@ -7,15 +7,15 @@ import 'package:collection/collection.dart';
 
 
 
-class Epi2Game3Screen extends StatefulWidget {
+class Epi3Game4Screen extends StatefulWidget {
   @override
-  _Epi2Game3ScreenState createState() => _Epi2Game3ScreenState();
+  _Epi3Game4ScreenState createState() => _Epi3Game4ScreenState();
 }
 
-class _Epi2Game3ScreenState extends State<Epi2Game3Screen> {
+class _Epi3Game4ScreenState extends State<Epi3Game4Screen> {
 
   int _i=0;
-  var answerList=[2,1,4,3];
+  var answerList=[2,3,4,1];
   var testList=[];
   int tapIndex=0;
   int num1=0;
@@ -78,7 +78,7 @@ class _Epi2Game3ScreenState extends State<Epi2Game3Screen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CardWithNumberButton(
-                          imagePath: 'assets/image/episode2/ep2_1.png',
+                          imagePath: 'assets/image/episode3/ep3_2.png',
                           number: num3,
                           onTap: (){
                             setState(() {
@@ -92,7 +92,7 @@ class _Epi2Game3ScreenState extends State<Epi2Game3Screen> {
                       ),
                       SizedBox(width: 8,),
                       CardWithNumberButton(
-                          imagePath: 'assets/image/episode2/ep2_2.png',
+                          imagePath: 'assets/image/episode3/ep3_3.png',
                           number: num2,
                           onTap: (){
                             setState(() {
@@ -106,7 +106,7 @@ class _Epi2Game3ScreenState extends State<Epi2Game3Screen> {
                       ),
                       SizedBox(width: 8,),
                       CardWithNumberButton(
-                          imagePath: 'assets/image/episode2/ep2_3.png',
+                          imagePath: 'assets/image/episode3/ep3_4.png',
                           number: num1,
                           onTap: (){
                             setState(() {
@@ -120,7 +120,7 @@ class _Epi2Game3ScreenState extends State<Epi2Game3Screen> {
                       ),
                       SizedBox(width: 8,),
                       CardWithNumberButton(
-                          imagePath: 'assets/image/episode2/ep2_4.png',
+                          imagePath: 'assets/image/episode3/ep3_1.png',
                           number: num4,
                           onTap: (){
                             setState(() {
@@ -141,14 +141,14 @@ class _Epi2Game3ScreenState extends State<Epi2Game3Screen> {
             Container(
               width: double.infinity,
               height: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage('assets/image/episode2/2_3_hdee.jpg')
+                      image: AssetImage('assets/image/episode3/3_4_hdee.jpg')
                   )
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   const SizedBox(height: 190,),
                   GestureDetector(
