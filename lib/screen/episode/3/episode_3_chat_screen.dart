@@ -69,6 +69,7 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
       return;
     }
 
+
     if(isSuccess){
       _goToChatAfterTheGame(gameName: gameName);
     }else{
