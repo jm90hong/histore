@@ -50,6 +50,10 @@ class _GameIntroScreenState extends State<GameIntroScreen> {
     '4-1':{
       't':'맥 아더 장군 설득시키기',
       'c' :'맥 아더 장군 설득시키기 내용'
+    },
+    '4-2':{
+      't':'북한군 찾기',
+      'c' :'북한군 찾기 내용'
     }
   };
 

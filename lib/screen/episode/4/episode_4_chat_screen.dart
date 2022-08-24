@@ -10,6 +10,8 @@ import '../2/epi2_game1_screen.dart';
 import '../2/epi2_game2_screen.dart';
 import '../2/epi2_game3_screen.dart';
 import '../game_intro_screen.dart';
+import 'epi4_game1_screen.dart';
+import 'epi4_game2_screen.dart';
 
 
 
@@ -123,7 +125,7 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
                 context,
                 PageTransition(
                     type: PageTransitionType.fade,
-                    child: Epi2Game1Screen()
+                    child: Epi4Game1Screen()
                 )
             );
             game1Success=result;
@@ -134,14 +136,12 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
 
             break;
           case 'game2':
-
-
             var result1 = await Navigator.push(
                 context,
                 PageTransition(
                     type: PageTransitionType.fade,
                     child: GameIntroScreen(
-                      episodeIndex: 2,
+                      episodeIndex: 4,
                       gameIndex: 2,
                       bgPath: 'assets/image/episode2/bg1.png',
                     )
@@ -152,11 +152,15 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
               return;
             }
 
+
+            //todo 인천상륙작전 계획서 작업
+
+
             var result = await Navigator.push(
                 context,
                 PageTransition(
                     type: PageTransitionType.fade,
-                    child: Epi2Game2Screen()
+                    child: Epi4Game2Screen()
                 )
             );
             game2Success=result;
@@ -173,28 +177,7 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
             game3Success=result;
             _judgement(gameName: 'game3',isSuccess: game3Success);
             break;
-          case 'game4':
-            var result = await Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade,
-                    child: Epi1Game4Screen()
-                )
-            );
-            game4Success=result;
-            _judgement(gameName: 'game4',isSuccess: game4Success);
-            break;
-          case 'game5':
-            var result = await Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade,
-                    child: Epi1Game5Screen()
-                )
-            );
-            game5Success=result;
-            _judgement(gameName: 'game5',isSuccess: game5Success);
-            break;
+
           case 'end':
             Navigator.pop(context,true);
             break;
@@ -232,9 +215,9 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
 
       },
       {
-        'isLeft':true,
-        'sayer':'대한',
-        'value':'대화2-1',
+        'isLeft':false,
+        'sayer':'맥아더',
+        'value':'알았습니다. 국제 연합군을 데리고 가겠습니다.',
         'a_img':'assets/image/episode4/c1.png',
         'b_img':'assets/image/episode4/c8.png',
         'background_img':'assets/image/episode4/bg5.png',
@@ -257,7 +240,7 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
         'value':'대화3-1',
         'a_img':'assets/image/episode4/c1.png',
         'b_img':'assets/image/episode4/c8.png',
-        'background_img':'assets/image/episode4/bg9.jpg',
+        'background_img':'assets/image/episode4/bg5.jpg',
       },
       {
         'isLeft':false,
@@ -265,7 +248,7 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
         'value':'대화3-2',
         'a_img':'assets/image/episode4/c1.png',
         'b_img':'assets/image/episode4/c8.png',
-        'background_img':'assets/image/episode4/bg9.jpg',
+        'background_img':'assets/image/episode4/bg5.jpg',
       },
       {
         'sayer':'game',
@@ -277,7 +260,7 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
         'value':'모든 게임을 성공하였군 에피소드4를 종료',
         'a_img':'assets/image/episode4/c1.png',
         'b_img':'assets/image/episode4/c8.png',
-        'background_img':'assets/image/episode4/bg9.jpg',
+        'background_img':'assets/image/episode4/bg5.jpg',
       },
       {
         'sayer':'game',
