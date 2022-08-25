@@ -26,7 +26,7 @@ class _IncheonSuccessScreenState extends State<IncheonSuccessScreen> {
           });
         },
         child: Image.asset(
-          'assets/image/episode4/ics1.png',
+          'assets/image/episode4/ics1.jpg',
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.cover,
@@ -48,12 +48,13 @@ class _IncheonSuccessScreenState extends State<IncheonSuccessScreen> {
     ];
   }
 
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async{
         Navigator.pop(context, isSuccess);
-        return true;
+        return isSuccess;
       },
       child: Scaffold(
         body: Container(
@@ -61,9 +62,7 @@ class _IncheonSuccessScreenState extends State<IncheonSuccessScreen> {
           height: double.infinity,
           child: IndexedStack(
             index: curIndex,
-            children: [
-
-            ],
+            children: imageList,
           ),
         ),
       ),

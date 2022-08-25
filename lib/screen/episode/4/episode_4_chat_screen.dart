@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:histore/screen/episode/4/incheon_success_screen.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
@@ -65,7 +66,7 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
   void _judgement({required String gameName, required bool isSuccess}){
 
     if(game1Success && game2Success && game3Success){
-      showToast('에피소드 2 성공');
+      showToast('에피소드 4 성공');
       //Navigator.pop(context,true);
       _goToChatAfterTheGame(gameName: gameName);
       return;
@@ -87,14 +88,13 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
   void _goToChatAfterTheGame({required String gameName}){
     var index = chatList.indexWhere((element) => element['value']==gameName);
     currentChatIndex=index+1;
-
-
-
     _setUiByChatIndex();
   }
 
   void goNextChat() async{
+
     currentChatIndex++;
+    print('currentChatIndex $currentChatIndex');
     if(chatList[currentChatIndex]['sayer'] != 'game'){
       _setUiByChatIndex();
     }else{
@@ -153,7 +153,6 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
             }
 
 
-            //todo 인천상륙작전 계획서 작업
 
 
             var result = await Navigator.push(
@@ -163,7 +162,27 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
                     child: Epi4Game2Screen()
                 )
             );
-            game2Success=result;
+
+
+            if(!result){
+              return;
+            }
+
+            //todo 인천상륙작전 계획서 작업
+            var result2 = await Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: const IncheonSuccessScreen()
+                )
+            );
+
+            if(!result2){
+              return;
+            }
+
+            game2Success=result2;
+
             _judgement(gameName: 'game2',isSuccess: game2Success);
             break;
           case 'game3':
@@ -240,7 +259,7 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
         'value':'대화3-1',
         'a_img':'assets/image/episode4/c1.png',
         'b_img':'assets/image/episode4/c8.png',
-        'background_img':'assets/image/episode4/bg5.jpg',
+        'background_img':'assets/image/episode4/bg5.png',
       },
       {
         'isLeft':false,
@@ -248,7 +267,7 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
         'value':'대화3-2',
         'a_img':'assets/image/episode4/c1.png',
         'b_img':'assets/image/episode4/c8.png',
-        'background_img':'assets/image/episode4/bg5.jpg',
+        'background_img':'assets/image/episode4/bg5.png',
       },
       {
         'sayer':'game',
@@ -260,7 +279,7 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
         'value':'모든 게임을 성공하였군 에피소드4를 종료',
         'a_img':'assets/image/episode4/c1.png',
         'b_img':'assets/image/episode4/c8.png',
-        'background_img':'assets/image/episode4/bg5.jpg',
+        'background_img':'assets/image/episode4/bg5.png',
       },
       {
         'sayer':'game',
