@@ -94,7 +94,7 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
   void goNextChat() async{
 
     currentChatIndex++;
-    print('currentChatIndex $currentChatIndex');
+    print('currentChatIndex++ 후 :  $currentChatIndex');
     if(chatList[currentChatIndex]['sayer'] != 'game'){
       _setUiByChatIndex();
     }else{
@@ -149,6 +149,8 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
             );
 
             if(!result1){
+              game2Success=result1;
+              _judgement(gameName: 'game2', isSuccess: game2Success);
               return;
             }
 
@@ -165,6 +167,8 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
 
 
             if(!result){
+              game2Success=result;
+              _judgement(gameName: 'game2', isSuccess: game2Success);
               return;
             }
 
@@ -178,12 +182,14 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
             );
 
             if(!result2){
+              game2Success=result2;
+              _judgement(gameName: 'game2', isSuccess: game2Success);
               return;
             }
 
-            game2Success=result2;
 
-            _judgement(gameName: 'game2',isSuccess: game2Success);
+            game2Success=result2;
+            _judgement(gameName: 'game2', isSuccess: game2Success);
             break;
           case 'game3':
             var result = await Navigator.push(
