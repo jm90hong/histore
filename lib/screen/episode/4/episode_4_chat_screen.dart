@@ -13,6 +13,7 @@ import '../2/epi2_game3_screen.dart';
 import '../game_intro_screen.dart';
 import 'epi4_game1_screen.dart';
 import 'epi4_game2_screen.dart';
+import 'epi4_game3_screen.dart';
 
 
 
@@ -192,11 +193,12 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
             _judgement(gameName: 'game2', isSuccess: game2Success);
             break;
           case 'game3':
+            //todo 에피소드 4 최종 추리
             var result = await Navigator.push(
                 context,
                 PageTransition(
                     type: PageTransitionType.fade,
-                    child: Epi2Game3Screen()
+                    child: Epi4Game3Screen()
                 )
             );
             game3Success=result;
