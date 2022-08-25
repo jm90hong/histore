@@ -201,13 +201,13 @@ class _HomeScreenState extends State<HomeScreen> {
         }
       },
       child: Container(
-        margin: EdgeInsets.only(right: 12),
+        margin: EdgeInsets.only(right: 10),
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
             color: isOpen ? Color(0xfff39a1a) : Colors.grey,
             borderRadius: BorderRadius.circular(10)
         ),
-        width: 180,
+        width: 178,
         height: 210,
 
         child: Column(
@@ -219,7 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 alignment: Alignment.center,
                 children: [
                   ClipRRect(
-                    child: Image.asset('assets/background/epi$episodeIndex.png',width: 150,height: 150,fit: BoxFit.cover,),
+                    child: Image.asset('assets/background/ep$episodeIndex.png',width: 150,height: 150,fit: BoxFit.cover,),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   Container(
