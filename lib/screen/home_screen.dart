@@ -136,6 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
               );
 
+
               if(result){
                 Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage2');
               }
