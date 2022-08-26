@@ -12,7 +12,7 @@ class Epi1Game5Screen extends StatefulWidget {
 class _Epi1Game5ScreenState extends State<Epi1Game5Screen> {
   
   int _i=0;
-  var answerList=[1,2,4,3];
+  var answerList=[3, 2, 1, 4];
   var testList=[];
   int tapIndex=0;
   int num1=0;
@@ -81,7 +81,7 @@ class _Epi1Game5ScreenState extends State<Epi1Game5Screen> {
                             setState(() {
                               tapIndex++;
                               num3=tapIndex;
-                              testList.add(3);print(testList);
+                              testList.add(1);print(testList);
                               _compare();
                             });
                           },
@@ -109,7 +109,7 @@ class _Epi1Game5ScreenState extends State<Epi1Game5Screen> {
                             setState(() {
                               tapIndex++;
                               num1=tapIndex;
-                              testList.add(1);
+                              testList.add(3);print(testList);
                               _compare();
                             });
                           },

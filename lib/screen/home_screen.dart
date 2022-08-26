@@ -137,13 +137,11 @@ class _HomeScreenState extends State<HomeScreen> {
               );
 
               if(result){
-                //todo episode1 성공 처리
-                Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage1');
+                Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage2');
               }
 
             }
           }else if(episodeIndex==2){
-
 
             //todo 에피소드 2 시작하기
             var result = await Navigator.push(
@@ -155,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
             );
             if(result){
               //todo episode2 성공 처리
-              Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage2');
+              Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage3');
             }
 
           }else if(episodeIndex==3){
@@ -171,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
             if(result){
               //todo episode3 성공 처리
-              Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage3');
+              Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage4');
             }
 
           }else if(episodeIndex==4){
@@ -184,10 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
             );
 
-            if(result){
-              //todo episode4 성공 처리
-              Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage4');
-            }
+
           }
 
 
