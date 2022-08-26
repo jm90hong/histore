@@ -71,7 +71,7 @@ class _Epi1Game4ScreenState extends State<Epi1Game4Screen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Image.asset('assets/image/a.png',height: 400,),
-                        Image.asset('assets/image/b.png',height: 400,),
+                        Image.asset('assets/image/episode1/lv1_opposition.png',height: 400,),
                       ],
                     ),
                   ),

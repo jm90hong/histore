@@ -24,14 +24,21 @@ class _Epi2Game1ScreenState extends State<Epi2Game1Screen> {
 
   List<Map> msgs = [
     {
-      'aImg':'assets/image/episode2/c1.png',
+      'aImg':'assets/image/episode2/c9.png',
       'bImg':'assets/image/episode2/c1.png',
-      'msg1':'국내성에 머문다면 넓은 북쪽으로 나아갈 수 있다!',
-      'msg2':{'v':'국내성은 내륙깊이 있잖아요. 평양으로 천도하면 남쪽으로 백제, 신라도 견제할 수 있고 밑으로도 위로도 뻗어 나갈 수 있어요.','a':true},
-      'msg3':{'v':'평양으로 천도하면 백제, 신라와 힘을 합쳐서 중국을 칠 수 있어요.','a':false},
+      'msg1':'명나라와 전쟁을 하면 좋지 않은 이유가 무엇이지?',
+      'msg2':{'v':'작은나라가 큰 나라와 싸워 이기기는 어려워요.','a':true},
+      'msg3':{'v':'명나라가 북원과 전쟁 중이라 고려의 군사가 더 많아요','a':false},
     },
     {
-      'aImg':'assets/image/episode2/c1.png',
+      'aImg':'assets/image/episode2/c9.png',
+      'bImg':'assets/image/episode2/c1.png',
+      'msg1':'수도 옮기는 게 쉬운 줄 알아? 평양으로 옮기면 분명 제대로 마련된 게 없어서 힘들 거다.',
+      'msg2':{'v':'평양은 도로가 닦여 있어서 문제 없을 거예요.','a':false},
+      'msg3':{'v':'평양은 넓은 평야가 있고 주변에 강이 있어서 경제,문화 모든 면에서 좋아요.','a':true},
+    },
+    {
+      'aImg':'assets/image/episode2/c9.png',
       'bImg':'assets/image/episode2/c1.png',
       'msg1':'수도 옮기는 게 쉬운 줄 알아? 평양으로 옮기면 분명 제대로 마련된 게 없어서 힘들 거다.',
       'msg2':{'v':'평양은 도로가 닦여 있어서 문제 없을 거예요.','a':false},

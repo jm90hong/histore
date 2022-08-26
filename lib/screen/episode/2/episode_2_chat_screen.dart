@@ -126,9 +126,6 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
 
 
 
-
-
-
             break;
           case 'game2':
 

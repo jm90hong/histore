@@ -15,7 +15,7 @@ class Epi3Game4Screen extends StatefulWidget {
 class _Epi3Game4ScreenState extends State<Epi3Game4Screen> {
 
   int _i=0;
-  var answerList=[2,3,4,1];
+  var answerList=[2, 3, 4, 1];
   var testList=[];
   int tapIndex=0;
   int num1=0;
