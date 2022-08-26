@@ -135,6 +135,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Episode1ChatScreen()
                   )
               );
+
+              if(result){
+                //todo episode1 성공 처리
+                Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage1');
+              }
+
             }
           }else if(episodeIndex==2){
 
@@ -147,6 +153,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Episode2ChatScreen()
                 )
             );
+            if(result){
+              //todo episode2 성공 처리
+              Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage2');
+            }
 
           }else if(episodeIndex==3){
 
@@ -159,6 +169,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
             );
 
+            if(result){
+              //todo episode3 성공 처리
+              Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage3');
+            }
+
           }else if(episodeIndex==4){
             //todo 에피소드 4 시작하기
             var result = await Navigator.push(
@@ -168,6 +183,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Episode4ChatScreen()
                 )
             );
+
+            if(result){
+              //todo episode4 성공 처리
+              Provider.of<UserModel>(context,listen: false).clearStage(stage: 'stage4');
+            }
           }
 
 
