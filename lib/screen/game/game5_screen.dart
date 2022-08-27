@@ -54,7 +54,20 @@ class _Game5ScreenState extends State<Game5Screen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('최종 추리',style: TextStyle(color: Colors.white,fontFamily: 'dx',fontWeight: FontWeight.normal,fontSize: 25),),
+              Container(
+                  width: 150,
+                  height: 40,
+                  decoration:BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: AssetImage(
+                            'assets/image/duru.png',
+
+                          )
+                      )
+                  ),
+                  child:  Center(child: Text('최종 추리',style: TextStyle(color: Colors.white,fontFamily: 'dx',fontWeight: FontWeight.normal,fontSize: 20),))
+              ),
               SizedBox(height: 10,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

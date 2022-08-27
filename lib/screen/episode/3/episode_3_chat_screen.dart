@@ -90,7 +90,6 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
     currentChatIndex=index+1;
 
 
-
     _setUiByChatIndex();
   }
 
@@ -103,7 +102,6 @@ class _Episode3ChatScreenState extends State<Episode3ChatScreen> {
         //todo game screen으로 이동
         switch(chatList[currentChatIndex]['value']){
           case 'game1':
-
 
             var result1 = await Navigator.push(
                 context,
