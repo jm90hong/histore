@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       //DeviceOrientation.landscapeRight,
     ]);
 
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context)=>UserModel()),

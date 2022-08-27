@@ -157,7 +157,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
       {
         'sayer':'대한',
         'value':'대화1-1',
-        'a_img':'assets/image/episode1/d_angrycry.png',
+        'a_img':'assets/image/episode1/d_basic.png',
         'b_img':'assets/image/episode1/b.png',
         'background_img':'assets/image/episode1/bg9.jpg',
       },

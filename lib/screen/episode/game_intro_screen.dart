@@ -37,7 +37,7 @@ class _GameIntroScreenState extends State<GameIntroScreen> {
     },
     '2-2':{
       't':'개경까지 가는 가장 빠른길 고르기',
-      'c' :'개경까지 가는 가장 빠른길 고르기 내용'
+      'c' :'개경까지 가는 가장 빠른길 고르기 내용 개경까지\n 가는 가장 빠른길 고르기 내용 개경까지\n 가는 가장 빠른길 고르기 내용'
     },
     '3-1':{
       't':'찬반논쟁 선택 게임',
@@ -46,6 +46,14 @@ class _GameIntroScreenState extends State<GameIntroScreen> {
     '3-2':{
       't':'훈민정음 헤레본 찾기',
       'c' :'훈민정음 헤레본 찾기 내용'
+    },
+    '4-1':{
+      't':'맥 아더 장군 설득시키기',
+      'c' :'맥 아더 장군 설득시키기 내용'
+    },
+    '4-2':{
+      't':'북한군 찾기',
+      'c' :'북한군 찾기 내용'
     }
   };
 
@@ -85,20 +93,23 @@ class _GameIntroScreenState extends State<GameIntroScreen> {
                   alignment: Alignment.center,
                   children: [
                     Image.asset('assets/image/duru.png'),
-                    Positioned(
-                      top: 8,
-                      child: Container(
-                        width: 150,
-                        height: 40,
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/icon/long_box1.png')
-                            )
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Episode ${widget.episodeIndex}',
-                            style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 17),
+                    Visibility(
+                      visible: false,
+                      child: Positioned(
+                        top: 8,
+                        child: Container(
+                          width: 150,
+                          height: 40,
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage('assets/icon/long_box1.png')
+                              )
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Episode ${widget.episodeIndex}',
+                              style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 17),
+                            ),
                           ),
                         ),
                       ),

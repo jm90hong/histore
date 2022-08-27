@@ -1,16 +1,19 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:histore/model/game_result_model.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:provider/provider.dart';
 
-class Epi2Game1Screen extends StatefulWidget {
+import '../../../model/game_result_model.dart';
+
+
+
+class Epi4Game1Screen extends StatefulWidget {
+  const Epi4Game1Screen({Key? key}) : super(key: key);
+
   @override
-  _Epi2Game1ScreenState createState() => _Epi2Game1ScreenState();
+  State<Epi4Game1Screen> createState() => _Epi4Game1ScreenState();
 }
 
-class _Epi2Game1ScreenState extends State<Epi2Game1Screen> {
-
+class _Epi4Game1ScreenState extends State<Epi4Game1Screen> {
 
   String aImg='assets/image/episode2/c1.png';
   String bImg='assets/image/episode2/c2.png';
@@ -24,29 +27,15 @@ class _Epi2Game1ScreenState extends State<Epi2Game1Screen> {
 
   List<Map> msgs = [
     {
-      'aImg':'assets/image/episode2/c9.png',
-      'bImg':'assets/image/episode2/c1.png',
-      'msg1':'명나라와 전쟁을 하면 좋지 않은 이유가 무엇이지?',
-      'msg2':{'v':'작은나라가 큰 나라와 싸워 이기기는 어려워요.','a':true},
-      'msg3':{'v':'명나라가 북원과 전쟁 중이라 고려의 군사가 더 많아요','a':false},
+      'aImg':'assets/image/episode4/c6.png',
+      'bImg':'assets/image/episode4/c8.png',
+      'msg1':'우리가 무엇을 도와주면 되는가?',
+      'msg2':{'v':'대한민국에 있는 미군들이 위헙합니다. 연합군을 보내주세요','a':true},
+      'msg3':{'v':'대한민국에 있는 미군들이 위험해 미군들만 미국으로 보내주세요','a':false},
+      'msg4':{'v':'미국의 명성이 높아질 기회입니다.','a':false},
     },
-    {
-      'aImg':'assets/image/episode2/c9.png',
-      'bImg':'assets/image/episode2/c1.png',
-      'msg1':'수도 옮기는 게 쉬운 줄 알아? 평양으로 옮기면 분명 제대로 마련된 게 없어서 힘들 거다.',
-      'msg2':{'v':'평양은 도로가 닦여 있어서 문제 없을 거예요.','a':false},
-      'msg3':{'v':'평양은 넓은 평야가 있고 주변에 강이 있어서 경제,문화 모든 면에서 좋아요.','a':true},
-    },
-    {
-      'aImg':'assets/image/episode2/c9.png',
-      'bImg':'assets/image/episode2/c1.png',
-      'msg1':'수도 옮기는 게 쉬운 줄 알아? 평양으로 옮기면 분명 제대로 마련된 게 없어서 힘들 거다.',
-      'msg2':{'v':'평양은 도로가 닦여 있어서 문제 없을 거예요.','a':false},
-      'msg3':{'v':'평양은 넓은 평야가 있고 주변에 강이 있어서 경제,문화 모든 면에서 좋아요.','a':true},
-    },
+
   ];
-
-
 
   @override
   void initState() {
@@ -69,7 +58,7 @@ class _Epi2Game1ScreenState extends State<Epi2Game1Screen> {
       },
       child: Scaffold(
         body: BackgroundContainer(
-            imagePath: 'assets/image/episode2/bg2.png',
+            imagePath: 'assets/background/bg5.png',
             child: Stack(
               alignment: Alignment.center,
               children: [
@@ -97,13 +86,13 @@ class _Epi2Game1ScreenState extends State<Epi2Game1Screen> {
                       text: msgs[_curIndex]['msg1'],
                     ),
 
-                    const SizedBox(height: 50,),
+                    const SizedBox(height: 10,),
 
                     Visibility(
-                      visible: false,
+                      visible: true,
                       child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20),
-                        child: Image.asset('assets/icon/vs.png',width: 130,),
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Image.asset('assets/icon/vs.png',width: 100,),
                       ),
                     ),
                     MsgBubble(
@@ -135,6 +124,22 @@ class _Epi2Game1ScreenState extends State<Epi2Game1Screen> {
                         }
                       },
                       text: msgs[_curIndex]['msg3']['v'],
+                    ),
+                    const SizedBox(height: 8,),
+                    MsgBubble(
+                      onTap: (){
+
+                        if(msgs[_curIndex]['msg4']['a']){
+                          setState(() {
+                            _result='y';
+                          });
+                        }else{
+                          setState(() {
+                            _result='n';
+                          });
+                        }
+                      },
+                      text: msgs[_curIndex]['msg4']['v'],
                     ),
                   ],
                 ),
@@ -177,7 +182,7 @@ class _Epi2Game1ScreenState extends State<Epi2Game1Screen> {
                           imagePath: 'assets/icon/btn_next_stage.png',
                           width: 70,
                           onTap: (){
-                            showToast('게임4 실패 다음 기회에...');
+                            showToast('게임1 실패 다음 기회에...');
                             Navigator.pop(context,false);
                           }
                       )
@@ -190,7 +195,6 @@ class _Epi2Game1ScreenState extends State<Epi2Game1Screen> {
     );
   }
 }
-
 
 
 class MsgBubble extends StatelessWidget {

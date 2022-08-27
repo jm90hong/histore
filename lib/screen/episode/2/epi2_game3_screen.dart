@@ -78,7 +78,7 @@ class _Epi2Game3ScreenState extends State<Epi2Game3Screen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CardWithNumberButton(
-                          imagePath: 'assets/image/card3.png',
+                          imagePath: 'assets/image/episode2/ep2_1.png',
                           number: num3,
                           onTap: (){
                             setState(() {
@@ -92,7 +92,7 @@ class _Epi2Game3ScreenState extends State<Epi2Game3Screen> {
                       ),
                       SizedBox(width: 8,),
                       CardWithNumberButton(
-                          imagePath: 'assets/image/card2.png',
+                          imagePath: 'assets/image/episode2/ep2_2.png',
                           number: num2,
                           onTap: (){
                             setState(() {
@@ -106,7 +106,7 @@ class _Epi2Game3ScreenState extends State<Epi2Game3Screen> {
                       ),
                       SizedBox(width: 8,),
                       CardWithNumberButton(
-                          imagePath: 'assets/image/card1.png',
+                          imagePath: 'assets/image/episode2/ep2_3.png',
                           number: num1,
                           onTap: (){
                             setState(() {
@@ -120,7 +120,7 @@ class _Epi2Game3ScreenState extends State<Epi2Game3Screen> {
                       ),
                       SizedBox(width: 8,),
                       CardWithNumberButton(
-                          imagePath: 'assets/image/card4.png',
+                          imagePath: 'assets/image/episode2/ep2_4.png',
                           number: num4,
                           onTap: (){
                             setState(() {

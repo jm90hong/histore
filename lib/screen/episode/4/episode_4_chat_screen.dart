@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:histore/screen/episode/4/incheon_success_screen.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
+import '../../../model/game_result_model.dart';
 import '../1/epi1_game4_screen.dart';
 import '../1/epi1_game5_screen.dart';
 import '../2/epi2_game1_screen.dart';
 import '../2/epi2_game2_screen.dart';
 import '../2/epi2_game3_screen.dart';
 import '../game_intro_screen.dart';
+import 'epi4_game1_screen.dart';
+import 'epi4_game2_screen.dart';
+import 'epi4_game3_screen.dart';
 
 
 
@@ -61,7 +67,7 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
   void _judgement({required String gameName, required bool isSuccess}){
 
     if(game1Success && game2Success && game3Success){
-      showToast('에피소드 2 성공');
+      showToast('에피소드 4 성공');
       //Navigator.pop(context,true);
       _goToChatAfterTheGame(gameName: gameName);
       return;
@@ -83,14 +89,13 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
   void _goToChatAfterTheGame({required String gameName}){
     var index = chatList.indexWhere((element) => element['value']==gameName);
     currentChatIndex=index+1;
-
-
-
     _setUiByChatIndex();
   }
 
   void goNextChat() async{
+
     currentChatIndex++;
+    print('currentChatIndex++ 후 :  $currentChatIndex');
     if(chatList[currentChatIndex]['sayer'] != 'game'){
       _setUiByChatIndex();
     }else{
@@ -105,9 +110,9 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
                 PageTransition(
                     type: PageTransitionType.fade,
                     child: GameIntroScreen(
-                      episodeIndex: 2,
+                      episodeIndex: 4,
                       gameIndex: 1,
-                      bgPath: 'assets/image/episode2/bg1.png',
+                      bgPath: 'assets/image/episode4/bg6.png',
                     )
                 )
             );
@@ -121,7 +126,7 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
                 context,
                 PageTransition(
                     type: PageTransitionType.fade,
-                    child: Epi2Game1Screen()
+                    child: Epi4Game1Screen()
                 )
             );
             game1Success=result;
@@ -132,14 +137,12 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
 
             break;
           case 'game2':
-
-
             var result1 = await Navigator.push(
                 context,
                 PageTransition(
                     type: PageTransitionType.fade,
                     child: GameIntroScreen(
-                      episodeIndex: 2,
+                      episodeIndex: 4,
                       gameIndex: 2,
                       bgPath: 'assets/image/episode2/bg1.png',
                     )
@@ -147,52 +150,61 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
             );
 
             if(!result1){
+              game2Success=result1;
+              _judgement(gameName: 'game2', isSuccess: game2Success);
               return;
             }
+
+
+
 
             var result = await Navigator.push(
                 context,
                 PageTransition(
                     type: PageTransitionType.fade,
-                    child: Epi2Game2Screen()
+                    child: Epi4Game2Screen()
                 )
             );
-            game2Success=result;
-            _judgement(gameName: 'game2',isSuccess: game2Success);
+
+
+            if(!result){
+              game2Success=result;
+              _judgement(gameName: 'game2', isSuccess: game2Success);
+              return;
+            }
+
+            //todo 인천상륙작전 계획서 작업
+            var result2 = await Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: const IncheonSuccessScreen()
+                )
+            );
+
+            if(!result2){
+              game2Success=result2;
+              _judgement(gameName: 'game2', isSuccess: game2Success);
+              return;
+            }
+
+
+            game2Success=result2;
+            _judgement(gameName: 'game2', isSuccess: game2Success);
             break;
           case 'game3':
+            //todo 에피소드 4 최종 추리
             var result = await Navigator.push(
                 context,
                 PageTransition(
                     type: PageTransitionType.fade,
-                    child: Epi2Game3Screen()
+                    child: Epi4Game3Screen()
                 )
             );
             game3Success=result;
             _judgement(gameName: 'game3',isSuccess: game3Success);
             break;
-          case 'game4':
-            var result = await Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade,
-                    child: Epi1Game4Screen()
-                )
-            );
-            game4Success=result;
-            _judgement(gameName: 'game4',isSuccess: game4Success);
-            break;
-          case 'game5':
-            var result = await Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade,
-                    child: Epi1Game5Screen()
-                )
-            );
-            game5Success=result;
-            _judgement(gameName: 'game5',isSuccess: game5Success);
-            break;
+
           case 'end':
             Navigator.pop(context,true);
             break;
@@ -212,17 +224,17 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
         'isLeft':true,
         'sayer':'대한',
         'value':'대화1-1',
-        'a_img':'assets/image/episode2/c1.png',
-        'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/image/episode1/bg9.jpg',
+        'a_img':'assets/image/episode4/c1.png',
+        'b_img':'assets/image/episode4/c8.png',
+        'background_img':'assets/image/episode4/bg5.png',
       },
       {
         'isLeft':false,
         'sayer':'사또',
         'value':'대화1-2',
-        'a_img':'assets/image/episode2/c1.png',
-        'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/image/episode1/bg9.jpg',
+        'a_img':'assets/image/episode4/c1.png',
+        'b_img':'assets/image/episode4/c8.png',
+        'background_img':'assets/image/episode4/bg5.png',
       },
       {
         'sayer':'game',
@@ -230,20 +242,20 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
 
       },
       {
-        'isLeft':true,
-        'sayer':'대한',
-        'value':'대화2-1',
-        'a_img':'assets/image/episode2/c1.png',
-        'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/background/bg4.png',
+        'isLeft':false,
+        'sayer':'맥아더',
+        'value':'알았습니다. 국제 연합군을 데리고 가겠습니다.',
+        'a_img':'assets/image/episode4/c1.png',
+        'b_img':'assets/image/episode4/c8.png',
+        'background_img':'assets/image/episode4/bg5.png',
       },
       {
         'isLeft':false,
         'sayer':'사또',
         'value':'대화2-2',
-        'a_img':'assets/image/episode2/c1.png',
-        'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/background/bg4.png',
+        'a_img':'assets/image/episode4/c1.png',
+        'b_img':'assets/image/episode4/c8.png',
+        'background_img':'assets/image/episode4/bg5.png',
       },
       {
         'sayer':'game',
@@ -253,17 +265,17 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
         'isLeft':true,
         'sayer':'대한',
         'value':'대화3-1',
-        'a_img':'assets/image/episode2/c1.png',
-        'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/background/bg4.png',
+        'a_img':'assets/image/episode4/c1.png',
+        'b_img':'assets/image/episode4/c8.png',
+        'background_img':'assets/image/episode4/bg5.png',
       },
       {
         'isLeft':false,
         'sayer':'장수왕',
         'value':'대화3-2',
-        'a_img':'assets/image/episode2/c1.png',
-        'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/background/bg4.png',
+        'a_img':'assets/image/episode4/c1.png',
+        'b_img':'assets/image/episode4/c8.png',
+        'background_img':'assets/image/episode4/bg5.png',
       },
       {
         'sayer':'game',
@@ -272,10 +284,10 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
       {
         'isLeft':true,
         'sayer':'장수왕',
-        'value':'모든 게임을 성공하였군 에피소드2를 종료',
-        'a_img':'assets/image/episode2/c1.png',
-        'b_img':'assets/image/episode2/c8.png',
-        'background_img':'assets/background/bg4.png',
+        'value':'모든 게임을 성공하였군 에피소드4를 종료',
+        'a_img':'assets/image/episode4/c1.png',
+        'b_img':'assets/image/episode4/c8.png',
+        'background_img':'assets/image/episode4/bg5.png',
       },
       {
         'sayer':'game',
@@ -290,12 +302,92 @@ class _Episode4ChatScreenState extends State<Episode4ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BackgroundContainer(
-        imagePath: '',
+        imagePath: backgroundImg,
         child: Stack(
+          alignment: Alignment.center,
           children: [
+            whoSay != 'game' ? Positioned(
+                bottom: -50,
+                left: 120,
+                child: Image.asset('$aImg',width: 170,fit: BoxFit.cover,)
+            ) : const SizedBox(width: 0,height: 0,),
+
+            whoSay != 'game' ? Positioned(
+                bottom: -50,
+                right: 120,
+                child: Image.asset('$bImg',width: 140,fit: BoxFit.cover,)
+            ) : const SizedBox(width: 0,height: 0,),
+
+
+
+            Positioned(
+              bottom: 30,
+              child: Container(
+                width: 520,
+                height: 100,
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white.withOpacity(0.5),
+                      ),
+                      width: 500,
+                      height: 80,
+                      child: Center(
+                        child: Text(msg!),
+                      ),
+                    ),
+
+                    Positioned(
+                      top: 5,
+                      left: isLeft ? 30 : null,
+                      right: !isLeft ? 30 : null,
+                      child: Container(
+                        width: 80,
+                        height: 40,
+                        decoration:const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/image/duru.png')
+                            )
+                        ),
+                        child: Center(
+                          child: Text(
+                            whoSay!,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15.5
+                            ),),
+                        ),
+                      ),
+                    ),
+
+                    Positioned(
+                      right: 10,
+                      bottom: 0,
+                      child: Consumer<GameResultModel>(
+                        builder: (context, resultModel, child){
+
+                          return SimpleButton(
+                              imagePath: 'assets/icon/btn_right.png',
+                              width: 33,
+                              onTap: (){
+                                goNextChat();
+                              }
+                          );
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
 
           ],
-        ),
+        )
       ),
     );
   }

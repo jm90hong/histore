@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:histore/model/user_model.dart';
+import 'package:histore/screen/episode/1/episode_1_chat_screen.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
@@ -41,34 +42,64 @@ class _LoadGameScreenState extends State<LoadGameScreen> {
             ),
             Text('게임로드',style: TextStyle(color: Color(0xffCF5E00),fontFamily: 'dx',fontSize: 24),),
             SizedBox(height: 20,),
-            Expanded(child: SingleChildScrollView(
-              child: Column(children: [
-                GestureDetector(
-                    onTap: () async{
-                      var result = await Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.fade, child: ChatScreen()));
-                      //todo 에피소드 2 성공 처리 하기
-                      if(result=='ok'){
-                        Provider.of<UserModel>(context,listen: false).clearStage(
-                            stage: 'stage2'
-                        );
-
-                      }else{
-
-                      }
-                    },
-                    child: Image.asset('assets/icon/jangsu1.png',width: 400,)
-                ),
-                SizedBox(height: 10,),
-                Image.asset('assets/icon/lock2.png',width: 400,),
-                SizedBox(height: 10,),
-                Image.asset('assets/icon/lock2.png',width: 400,),
-                SizedBox(height: 10,),
-                Image.asset('assets/icon/lock2.png',width: 400,),
-              ],),
+            Expanded(
+              child: SingleChildScrollView(
+                child:Consumer<UserModel>(
+                  builder: (context, userModel, child){
+                    return Column(
+                      children: ,
+                    );
+                  },
+                )
+              ),
             ))
           ],
         ),
       ),
     );
   }
+
+
+
+  Widget _buildGameloadCard({required int episodeIndex, required bool isOpen,required Function onTap}){
+
+    Widget w = Text('');
+
+    if(episodeIndex==1){
+      if(isOpen){
+        w= Image.asset('assets/icon/gamelaod_1_unlock.png',width: 400,);
+      }else{
+        w= Image.asset('assets/icon/gamelaod_1_lock.png',width: 400,);
+      }
+    }else if(episodeIndex==2){
+      if(isOpen){
+        w= Image.asset('assets/icon/gamelaod_2_unlock.png',width: 400,);
+      }else{
+        w= Image.asset('assets/icon/gamelaod_2_lock.png',width: 400,);
+      }
+    }else if(episodeIndex==3){
+      if(isOpen){
+        w= Image.asset('assets/icon/gamelaod_3_unlock.png',width: 400,);
+      }else{
+        w= Image.asset('assets/icon/gamelaod_3_lock.png',width: 400,);
+      }
+    }else{
+      if(isOpen){
+        w= Image.asset('assets/icon/gamelaod_4_unlock.png',width: 400,);
+      }else{
+        w= Image.asset('assets/icon/gamelaod_4_lock.png',width: 400,);
+      }
+    }
+
+
+    return w;
+  }
+
+
+
 }
+
+
+
+
+

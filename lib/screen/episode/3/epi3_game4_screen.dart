@@ -1,18 +1,21 @@
+
+
+
 import 'package:flutter/material.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:collection/collection.dart';
 
 
 
-class Epi1Game5Screen extends StatefulWidget {
+class Epi3Game4Screen extends StatefulWidget {
   @override
-  _Epi1Game5ScreenState createState() => _Epi1Game5ScreenState();
+  _Epi3Game4ScreenState createState() => _Epi3Game4ScreenState();
 }
 
-class _Epi1Game5ScreenState extends State<Epi1Game5Screen> {
-  
+class _Epi3Game4ScreenState extends State<Epi3Game4Screen> {
+
   int _i=0;
-  var answerList=[3, 2, 1, 4];
+  var answerList=[2, 3, 4, 1];
   var testList=[];
   int tapIndex=0;
   int num1=0;
@@ -51,8 +54,8 @@ class _Epi1Game5ScreenState extends State<Epi1Game5Screen> {
       }
     }
   }
-  
-  
+
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -75,13 +78,13 @@ class _Epi1Game5ScreenState extends State<Epi1Game5Screen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CardWithNumberButton(
-                          imagePath: 'assets/image/card3.png',
+                          imagePath: 'assets/image/episode3/ep3_2.png',
                           number: num3,
                           onTap: (){
                             setState(() {
                               tapIndex++;
                               num3=tapIndex;
-                              testList.add(1);print(testList);
+                              testList.add(1);
                               _compare();
                             });
                           },
@@ -89,7 +92,7 @@ class _Epi1Game5ScreenState extends State<Epi1Game5Screen> {
                       ),
                       SizedBox(width: 8,),
                       CardWithNumberButton(
-                          imagePath: 'assets/image/card2.png',
+                          imagePath: 'assets/image/episode3/ep3_3.png',
                           number: num2,
                           onTap: (){
                             setState(() {
@@ -103,13 +106,13 @@ class _Epi1Game5ScreenState extends State<Epi1Game5Screen> {
                       ),
                       SizedBox(width: 8,),
                       CardWithNumberButton(
-                          imagePath: 'assets/image/card1.png',
+                          imagePath: 'assets/image/episode3/ep3_4.png',
                           number: num1,
                           onTap: (){
                             setState(() {
                               tapIndex++;
                               num1=tapIndex;
-                              testList.add(3);print(testList);
+                              testList.add(3);
                               _compare();
                             });
                           },
@@ -117,13 +120,13 @@ class _Epi1Game5ScreenState extends State<Epi1Game5Screen> {
                       ),
                       SizedBox(width: 8,),
                       CardWithNumberButton(
-                          imagePath: 'assets/image/card4.png',
+                          imagePath: 'assets/image/episode3/ep3_1.png',
                           number: num4,
                           onTap: (){
                             setState(() {
                               tapIndex++;
                               num4=tapIndex;
-                              testList.add(4);print(testList);
+                              testList.add(4);
                               _compare();
                             });
                           },
@@ -138,14 +141,14 @@ class _Epi1Game5ScreenState extends State<Epi1Game5Screen> {
             Container(
               width: double.infinity,
               height: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage('assets/image/episode1/hdee.jpg')
-                )
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage('assets/image/episode3/3_4_hdee.jpg')
+                  )
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   const SizedBox(height: 190,),
                   GestureDetector(
