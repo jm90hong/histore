@@ -21,6 +21,7 @@ class Episode1ChatScreen extends StatefulWidget {
 
 class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
 
+  bool isLeft=true;
   String a = "대한";
   String b = "장수왕";
   String? whoSay = '대한';
@@ -155,6 +156,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
     super.initState();
     chatList=[
       {
+        'isLeft':true,
         'sayer':'대한',
         'value':'대화1-1',
         'a_img':'assets/image/episode1/d_basic.png',
@@ -162,6 +164,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
         'background_img':'assets/image/episode1/bg9.jpg',
       },
       {
+        'isLeft':false,
         'sayer':'장수왕',
         'value':'대화1-2',
         'a_img':'assets/image/episode1/d_angrycry.png',
@@ -174,6 +177,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
 
       },
       {
+        'isLeft':true,
         'sayer':'대한',
         'value':'대화2-1',
         'a_img':'assets/image/episode1/d_angrycry.png',
@@ -181,6 +185,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
         'background_img':'assets/background/bg4.png',
       },
       {
+        'isLeft':false,
         'sayer':'장수왕',
         'value':'대화2-2',
         'a_img':'assets/image/episode1/d_angrycry.png',
@@ -192,6 +197,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
         'value':'game2',
       },
       {
+        'isLeft':true,
         'sayer':'대한',
         'value':'대화3-1',
         'a_img':'assets/image/episode1/d_angrycry.png',
@@ -199,6 +205,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
         'background_img':'assets/background/bg4.png',
       },
       {
+        'isLeft':false,
         'sayer':'장수왕',
         'value':'대화3-2',
         'a_img':'assets/image/episode1/d_angrycry.png',
@@ -210,6 +217,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
         'value':'game3',
       },
       {
+        'isLeft':true,
         'sayer':'대한',
         'value':'대화4-1',
         'a_img':'assets/image/episode1/d_angrycry.png',
@@ -217,6 +225,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
         'background_img':'assets/background/bg4.png',
       },
       {
+        'isLeft':false,
         'sayer':'장수왕',
         'value':'대화4-2',
         'a_img':'assets/image/episode1/d_angrycry.png',
@@ -228,6 +237,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
         'value':'game4',
       },
       {
+        'isLeft':true,
         'sayer':'대한',
         'value':'대화5-1',
         'a_img':'assets/image/episode1/d_angrycry.png',
@@ -235,6 +245,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
         'background_img':'assets/background/bg4.png',
       },
       {
+        'isLeft':false,
         'sayer':'장수왕',
         'value':'대화5-2',
         'a_img':'assets/image/episode1/d_angrycry.png',
@@ -246,6 +257,7 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
         'value':'game5',
       },
       {
+        'isLeft':false,
         'sayer':'장수왕',
         'value':'모든 게임을 성공하였군 에피소드1을 종료',
         'a_img':'assets/image/episode1/d_angrycry.png',
@@ -290,7 +302,6 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
                 child: Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
-
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -305,8 +316,8 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
 
                     Positioned(
                       top: 5,
-                      left: whoSay=='대한' ? 30 : null,
-                      right: whoSay=='장수왕' ? 30 : null,
+                      left: isLeft ? 30 : null,
+                      right: !isLeft ? 30 : null,
                       child: Container(
                         width: 80,
                         height: 40,
