@@ -32,6 +32,7 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
   String? msg='';
   String? aImg='';
   String? bImg='';
+  String birdImg='';
   String backgroundImg='';
   int currentChatIndex=0;
   List<Map> chatList = [];
@@ -52,6 +53,7 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
       msg=chatList[currentChatIndex]['value'];
       aImg = chatList[currentChatIndex]['a_img'];
       bImg = chatList[currentChatIndex]['b_img'];
+      birdImg = chatList[currentChatIndex]['bird_img'];
       backgroundImg = chatList[currentChatIndex]['background_img'];
     });
   }
@@ -211,6 +213,7 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
         'value':'대화1-1',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
+        'bird_img':'assets/image/episode1/c_basic.png',
         'background_img':'assets/image/episode1/bg9.jpg',
       },
       {
@@ -219,6 +222,7 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
         'value':'대화1-2',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
+        'bird_img':'assets/image/episode1/c_basic.png',
         'background_img':'assets/image/episode1/bg9.jpg',
       },
       {
@@ -232,6 +236,7 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
         'value':'대화2-1',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
+        'bird_img':'assets/image/episode1/c_basic.png',
         'background_img':'assets/background/bg4.png',
       },
       {
@@ -240,6 +245,7 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
         'value':'대화2-2',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
+        'bird_img':'assets/image/episode1/c_basic.png',
         'background_img':'assets/background/bg4.png',
       },
       {
@@ -252,6 +258,7 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
         'value':'대화3-1',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
+        'bird_img':'assets/image/episode1/c_basic.png',
         'background_img':'assets/background/bg4.png',
       },
       {
@@ -260,6 +267,7 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
         'value':'대화3-2',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
+        'bird_img':'assets/image/episode1/c_basic.png',
         'background_img':'assets/background/bg4.png',
       },
       {
@@ -272,6 +280,7 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
         'value':'모든 게임을 성공하였군 에피소드2를 종료',
         'a_img':'assets/image/episode2/c1.png',
         'b_img':'assets/image/episode2/c8.png',
+        'bird_img':'assets/image/episode1/c_basic.png',
         'background_img':'assets/background/bg4.png',
       },
       {
@@ -290,6 +299,13 @@ class _Episode2ChatScreenState extends State<Episode2ChatScreen> {
           child: Stack(
             alignment: Alignment.center,
             children: [
+              //todo 새 이미지 c_로 시작하는 이미지
+              whoSay != 'game' ? Positioned(
+                  top: 40,
+                  left: 280,
+                  child: Image.asset(birdImg,width: 100,fit: BoxFit.cover,)
+              ) : const SizedBox(width: 0,height: 0,),
+
               whoSay != 'game' ? Positioned(
                   bottom: -50,
                   left: 120,
