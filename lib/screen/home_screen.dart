@@ -118,6 +118,10 @@ class _HomeScreenState extends State<HomeScreen> {
         if(isOpen){
           showToast('$gameName 에 입장 합니다.');
           if(episodeIndex==1){
+
+
+
+
             var result = await Navigator.push(
                 context,
                 PageTransition(

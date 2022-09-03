@@ -32,7 +32,7 @@ class _Epi3Game3ScreenState extends State<Epi3Game3Screen> {
       _buildImage(imagePath: 'assets/image/episode3/[HistoRe]ep3.3.png'),
       _buildImage(imagePath: 'assets/image/episode3/[HistoRe]ep3.4.png'),
       _buildImage(imagePath: 'assets/image/episode3/[HistoRe]ep3.5.png'),
-      _buildQuestion(imagePath: 'assets/image/episode3/[HistoRe]ep3.6.png',ox: 'x'),
+      _buildQuestion(imagePath: 'assets/image/episode3/[HistoRe]ep3.6.png',ox: 'o'),
       _buildQuestion(imagePath: 'assets/image/episode3/[HistoRe]ep3.7.png',ox: 'o'),
       _buildQuestion(imagePath: 'assets/image/episode3/[HistoRe]ep3.8.png',ox: 'o'),
 

@@ -161,7 +161,7 @@ class _Epi2Game3ScreenState extends State<Epi2Game3Screen> {
                   )
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 190,),
                   GestureDetector(

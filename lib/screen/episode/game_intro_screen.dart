@@ -31,6 +31,7 @@ class _GameIntroScreenState extends State<GameIntroScreen> {
   String? content='';
 
   var contentMap = {
+
     '2-1':{
       't':'이성계의 마음 이해하기',
       'c' :'이성계 장군님이 요즘 ...'
