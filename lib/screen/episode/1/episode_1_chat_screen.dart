@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:histore/model/game_result_model.dart';
+import 'package:histore/screen/episode/game_intro_screen.dart';
 import 'package:histore/widget/app_widget.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
@@ -88,49 +89,121 @@ class _Episode1ChatScreenState extends State<Episode1ChatScreen> {
         //todo game screen으로 이동
         switch(chatList[currentChatIndex]['value']){
           case 'game1':
-            var result = await Navigator.push(
+
+
+
+
+            var result1 = await Navigator.push(
                 context,
                 PageTransition(
                     type: PageTransitionType.fade,
-                    child: Epi1Game1Screen()
-                )
-            );
-            epi1Game1Success=result;
-            _judgement(gameName: 'game1',isSuccess: epi1Game1Success);
-            break;
-          case 'game2':
-            var result = await Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade,
-                    child: Epi1Game2Screen()
-                )
-            );
-            epi1Game2Success=result;
-            _judgement(gameName: 'game2',isSuccess: epi1Game2Success);
-            break;
-          case 'game3':
-            var result = await Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade,
-                    child: Epi1Game3Screen()
-                )
-            );
-            epi1Game3Success=result;
-            _judgement(gameName: 'game3',isSuccess: epi1Game3Success);
-            break;
-          case 'game4':
-            var result = await Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade,
-                    child: Epi1Game4Screen()
+                    child: GameIntroScreen(
+                      episodeIndex: 1,
+                      gameIndex: 1,
+                      bgPath: 'assets/image/episode2/bg1.png',
+                    )
                 )
             );
 
-            epi1Game4Success=result;
-            _judgement(gameName: 'game4',isSuccess: epi1Game4Success);
+            if(result1){
+              var result = await Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.fade,
+                      child: Epi1Game1Screen()
+                  )
+              );
+              epi1Game1Success=result;
+              _judgement(gameName: 'game1',isSuccess: epi1Game1Success);
+            }
+
+
+            break;
+          case 'game2':
+
+
+            var result1 = await Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: GameIntroScreen(
+                      episodeIndex: 1,
+                      gameIndex: 2,
+                      bgPath: 'assets/image/episode2/bg1.png',
+                    )
+                )
+            );
+
+            if(result1){
+              var result = await Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.fade,
+                      child: Epi1Game2Screen()
+                  )
+              );
+              epi1Game2Success=result;
+              _judgement(gameName: 'game2',isSuccess: epi1Game2Success);
+            }
+
+
+            break;
+          case 'game3':
+
+            var result1 = await Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: GameIntroScreen(
+                      episodeIndex: 1,
+                      gameIndex: 3,
+                      bgPath: 'assets/image/episode2/bg1.png',
+                    )
+                )
+            );
+
+            if(result1){
+              var result = await Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.fade,
+                      child: Epi1Game3Screen()
+                  )
+              );
+              epi1Game3Success=result;
+              _judgement(gameName: 'game3',isSuccess: epi1Game3Success);
+            }
+
+
+            break;
+          case 'game4':
+
+            var result1 = await Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.fade,
+                    child: GameIntroScreen(
+                      episodeIndex: 1,
+                      gameIndex: 4,
+                      bgPath: 'assets/image/episode2/bg1.png',
+                    )
+                )
+            );
+
+
+            if(result1){
+              var result = await Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.fade,
+                      child: Epi1Game4Screen()
+                  )
+              );
+
+              epi1Game4Success=result;
+              _judgement(gameName: 'game4',isSuccess: epi1Game4Success);
+            }
+
             break;
           case 'game5':
             var result = await Navigator.push(
